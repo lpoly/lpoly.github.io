@@ -1,12 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lefteris Polychronakis</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Hello, I'm [Your Name] 👋</h1>
-  <p>This is my very first website hosted with GitHub Pages!</p>
+  <div class="container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <img src="profile.jpg" alt="Your Photo" class="profile-img" />
+      <h1>Lefteris Polychronakis</h1>
+      <p class="role">Research Assistant at FORTH</p>
+      <p class="location">Based in Heraklion, Greece</p>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/linkedin.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/github.png" alt="GitHub" /></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/youtube.png" alt="YouTube" /></a>
+      </div>
+
+      <div class="about">
+        <h3>About</h3>
+        <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
+      </div>
+
+      <div class="skills">
+        <h3>Skills</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>SQL</span>
+          <span>LaTeX</span>
+          <span>C</span>
+          <span>Machine Learning</span>
+          <span>Statistics</span>
+          <span>Linear Algebra</span>
+        </div>
+      </div>
+
+      <div class="languages">
+        <h3>Languages</h3>
+        <ul>
+          <li>Greek (Native)</li>
+          <li>English (Fluent)</li>
+          <li>German (Elementary)</li>
+        </ul>
+      </div>
+
+      <div class="interests">
+        <h3>Hobbies & Interests</h3>
+        <ul>
+          <li>🚣‍♂️ Competitive Kayaking</li>
+          <li>🏔️ Hiking & Nature</li>
+          <li>🏺 History</li>
+          <li>🌍 Geopolitics</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Right Content Area -->
+    <main class="main-content">
+      <section class="projects-wrapper">
+        <div class="projects-block">
+          <h2>Projects</h2>
+          <div class="projects">
+            <div class="project">
+              <img src="./graphics/projects/project-images/robotic-arm.jpg" alt="Robotic-Arm project" />
+              <h3>Optimizing the Trajectory of a Robotic Arm </h3>
+              <div class="tags">
+                <span>Python</span><span>Optimization</span>
+              </div>
+              <p>Description...</p>
+              <a href="./projects/robotic-arm.html">Read more →</a>
+            </div>
+      
+            <div class="project">
+              <img src="./graphics/projects/project-images/sudoku.png" alt="Sudoku project" />
+              <h3>An Augmented Reality Sudoku Solver</h3>
+              <div class="tags">
+                <span>Python</span><span>Machine Learning</span><span>Computer Vision</span>
+              </div>
+              <p>Description...</p>
+              <a href="./projects/sudoku.html">Read more →</a>
+            </div>
+          </div>
+          <a href="./projects/projects.html" class="more-projects">More Projects →</a>
+        </div>
+      </section>
+            
+      <section class="experience">
+        <h2>Experience</h2>
+      
+        <div class="entry">
+          <div class="entry-text">
+            <strong>Graduate Research Assistant</strong>
+            <p>Scholarship beneficiary during my Master's. Research interests include Constrastive Learning for Time-Series, Uncertainty Quantification and Prediction Fusion for multi-modal Data Representations. </p>
+            <div class="tags">
+              <span>Python</span><span>PyTorch</span><span>Technical Writing</span>
+            </div>
+          </div>
+          <div class="entry-date">Oct 2024 – present</div>
+        </div>
+      
+        <div class="entry">
+          <div class="entry-text">
+            <strong>Private Tutoring</strong>
+            <p>Private tutoring for 2 students per semester in undergraduate Mathematics and Programming courses, including Linear
+              Algebra, Python, Discrete Mathematics, Probabilities, and Numerical Analysis. Message me on <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+               for tutoring sessions.</p>
+            <div class="tags">
+              <span>Tutoring</span><span>Presentations</span>
+            </div>
+          </div>
+          <div class="entry-date">Sep 2022 – present</div>
+        </div>
+      </section>
+      
+
+      <section class="education">
+        <h2>Education</h2>
+
+        <div class="entry">
+          <div class="entry-text">
+            <strong>Computer Science and Engineering, MSc – University of Crete</strong>
+            <p>Specialized in Machine Learning and Artificial Intelligence</p>
+          </div>
+          <div class="entry-date">Feb 2024 – Feb 2026</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-text">
+            <strong>Mathematics, BSc – University of Crete</strong>
+            <p>Focusing on Applied Mathematics and particulary Mathematics of Machine Learning. Main courses: Linear Algebra, Machine Learning, Optimization, Python, Statistics, Algorithms, Numerical Analysis</p>
+          </div>
+          <div class="entry-date">Sep 2019 – Jan 2024</div>
+        </div>
+      
+      </section>
+      
+    </main>
+  </div>
 </body>
 </html>
