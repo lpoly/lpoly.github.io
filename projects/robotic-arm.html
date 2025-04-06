@@ -1,0 +1,112 @@
+<html>
+<head>
+  <title>Projects - Robotic Arm</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <a href="../index.html">
+          <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
+        </a>
+        <h1>Lefteris Polychronakis</h1>
+        <p class="role">Research Assistant at FORTH</p>
+        <p class="location">Based in Heraklion, Greece</p>
+  
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
+          <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
+          <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+        </div>
+  
+        <div class="about">
+          <h3>About</h3>
+          <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
+        </div>
+  
+        <div class="skills">
+          <h3>Skills</h3>
+          <div class="tags">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>LaTeX</span>
+            <span>C</span>
+            <span>Machine Learning</span>
+            <span>Statistics</span>
+            <span>Linear Algebra</span>
+          </div>
+        </div>
+  
+        <div class="languages">
+          <h3>Languages</h3>
+          <ul>
+            <li>Greek (Native)</li>
+            <li>English (Fluent)</li>
+            <li>German (Elementary)</li>
+          </ul>
+        </div>
+  
+        <div class="interests">
+          <h3>Hobbies & Interests</h3>
+          <ul>
+            <li>🚣‍♂️ Competitive Kayaking</li>
+            <li>🏔️ Hiking & Nature</li>
+            <li>🏺 History</li>
+            <li>🌍 Geopolitics</li>
+          </ul>
+        </div>
+    </aside>
+    <main class="main-content">
+      <section class="details-block">
+        <a href="../projects/projects.html" class="back-arrow">← Back to Projects</a>
+    
+        <h2>Optimizing the Trajectory of a Robotic Arm</h2>
+    
+        <img src="../graphics/projects/project-images/robotic-arm.jpg" alt="Robotic Arm" class="details-img" />
+    
+        <div class="tags">
+          <span>Python</span>
+          <span>Control Theory</span>
+          <span>Simulation</span>
+          <span>Optimization</span>
+        </div>
+    
+        <p><strong>Brief:</strong> This project focuses on optimizing the trajectory of a robotic arm in both 2D and 3D space. By leveraging forward kinematics and gradient-based optimization, the goal is to guide the arm’s end-effector toward a target point with minimal error. Implemented in Python, the system models joint behavior and applies numerical techniques to find optimal joint angles through simulation and cost minimization.</p>
+    
+        <h3>Details</h3>
+
+        <p>
+          In the 2D setup, we modeled a two-link robotic arm where the position of the end-effector was derived using forward kinematics. The goal was to minimize the Euclidean distance between the arm's hand and a desired target point by adjusting the joint angles using gradient-based optimization. We derived and implemented analytical gradients of the cost function with respect to each joint angle.
+        </p>
+
+        <p>
+          For the 3D extension, the robotic arm consists of three segments, each represented by two angles: azimuth (θ) and elevation (ϕ). The arm's movement was modeled using <strong>spherical coordinates</strong> to capture the spatial orientation of each joint. This allowed for smooth and realistic simulation of the arm's trajectory in three dimensions.
+        </p>
+
+        <p>
+          A key challenge was determining the optimal step size during gradient descent. To address this, we implemented the <strong>Armijo backtracking line search</strong> method. This approach dynamically adjusts the step size based on a sufficient decrease condition, ensuring fast convergence while preventing overshooting and oscillations of the arm.
+        </p>
+
+        <p>
+          For visualizing the movement and optimization process, we used <strong>VPython</strong> to animate the robotic arm in 3D space. This provided an intuitive representation of how the arm adjusts its joints in real-time to reach the target, making the results both interpretable and visually engaging.
+        </p>
+
+        <p>
+          Among the optimization techniques tested, <strong>Nesterov Accelerated Gradient Descent (NAGD)</strong> consistently outperformed traditional Gradient Descent in both speed and convergence quality. The results were verified using numerical metrics and visual animation.
+        </p>
+
+    
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="315" 
+            src="https://www.youtube.com/watch?v=VYm_BJp2MgU" 
+            title="Robotic Arm Simulation" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </main>
+    

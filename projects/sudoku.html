@@ -1,0 +1,113 @@
+<html>
+<head>
+  <title>Project: Robotic Arm</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <a href="../index.html">
+          <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
+        </a>
+        <h1>Lefteris Polychronakis</h1>
+        <p class="role">Research Assistant at FORTH</p>
+        <p class="location">Based in Heraklion, Greece</p>
+  
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
+          <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
+          <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+        </div>
+  
+        <div class="about">
+          <h3>About</h3>
+          <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
+        </div>
+  
+        <div class="skills">
+          <h3>Skills</h3>
+          <div class="tags">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>LaTeX</span>
+            <span>C</span>
+            <span>Machine Learning</span>
+            <span>Statistics</span>
+            <span>Linear Algebra</span>
+          </div>
+        </div>
+  
+        <div class="languages">
+          <h3>Languages</h3>
+          <ul>
+            <li>Greek (Native)</li>
+            <li>English (Fluent)</li>
+            <li>German (Elementary)</li>
+          </ul>
+        </div>
+  
+        <div class="interests">
+          <h3>Hobbies & Interests</h3>
+          <ul>
+            <li>🚣‍♂️ Competitive Kayaking</li>
+            <li>🏔️ Hiking & Nature</li>
+            <li>🏺 History</li>
+            <li>🌍 Geopolitics</li>
+          </ul>
+        </div>
+    </aside>
+    <main class="main-content">
+      <section class="details-block">
+        <a href="../index.html" class="back-arrow">← Back to Projects</a>
+        <h2>Augmented Reality Sudoku Solver</h2>
+        <img src="../graphics/projects/project-images/sudoku.png" alt="Sudoku Project Image" class="details-img" />
+
+        <div class="tags">
+          <span>Python</span>
+          <span>Computer Vision</span>
+          <span>Machine Learning</span>
+          <span>TensorFlow</span>
+        </div>
+
+        <p><strong>Brief:</strong> Built an augmented reality Sudoku solver using a Convolutional Neural Network (CNN) and computer vision techniques. The app captures a Sudoku grid using a camera, recognizes digits, solves the puzzle, and overlays the solution in real time.</p>
+
+        <h3>Details</h3>
+        <p>This project applies a mix of computer vision, CNN-based digit recognition, and constraint-solving techniques. A CNN model trained on the Chars74K dataset is used to classify digits within the Sudoku grid.</p>
+
+        <p>The main pipeline includes:</p>
+        <ul>
+          <li>Image preprocessing using OpenCV (grayscale conversion, thresholding, resizing)</li>
+          <li>Grid and cell extraction using contour detection and Hough line transforms</li>
+          <li>Digit classification with a trained CNN model using TensorFlow/Keras</li>
+          <li>Sudoku solving via an Exact Cover algorithm</li>
+          <li>Overlaying the solution back onto the original image</li>
+        </ul>
+
+        <p>The model was trained using a cleaned and labeled subset of the Chars74K dataset. Extensive preprocessing and morphological operations were applied to ensure digits were centered, thresholded, and normalized. The final solution is rendered onto the original grid using inverse perspective transforms.</p>
+
+        <h3>Tools Used</h3>
+        <ul>
+          <li>Python</li>
+          <li>OpenCV</li>
+          <li>TensorFlow / Keras</li>
+          <li>NumPy</li>
+        </ul>
+
+        <h3>Video</h3>
+
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="315" 
+            src="https://www.youtube.com/shorts/ALJ3PqXbl9o" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

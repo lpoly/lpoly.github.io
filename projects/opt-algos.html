@@ -1,0 +1,338 @@
+<html>
+<head>
+  <title>Projects - Optimization Algorithms</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <a href="../index.html">
+          <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
+        </a>
+        <h1>Lefteris Polychronakis</h1>
+        <p class="role">Research Assistant at FORTH</p>
+        <p class="location">Based in Heraklion, Greece</p>
+  
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
+          <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
+          <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+        </div>
+  
+        <div class="about">
+          <h3>About</h3>
+          <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
+        </div>
+  
+        <div class="skills">
+          <h3>Skills</h3>
+          <div class="tags">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>LaTeX</span>
+            <span>C</span>
+            <span>Machine Learning</span>
+            <span>Statistics</span>
+            <span>Linear Algebra</span>
+          </div>
+        </div>
+  
+        <div class="languages">
+          <h3>Languages</h3>
+          <ul>
+            <li>Greek (Native)</li>
+            <li>English (Fluent)</li>
+            <li>German (Elementary)</li>
+          </ul>
+        </div>
+  
+        <div class="interests">
+          <h3>Hobbies & Interests</h3>
+          <ul>
+            <li>🚣‍♂️ Competitive Kayaking</li>
+            <li>🏔️ Hiking & Nature</li>
+            <li>🏺 History</li>
+            <li>🌍 Geopolitics</li>
+          </ul>
+        </div>
+    </aside>
+    <main class="main-content">
+      <section class="details-block">
+        <a href="../projects/projects.html" class="back-arrow">← Back to Projects</a>
+    
+        <h2>A Comparative Study on First Order Optimization Algorithms</h2>
+    
+        <img src="../graphics/projects/project-images/opt-algos.jpg" alt="Optimization Algorithms" class="details-img" />
+    
+        <div class="tags">
+          <span>Python</span>
+          <span>Optimization</span>
+          <span>Gradient Descent</span>
+          <span>NAGD</span>
+        </div>
+    
+        <p><strong>Brief:</strong> In this project, I implemented and compared several first-order optimization algorithms from scratch, including Steepest Descent (Gradient Descent with Line-Search), Momentum Gradient Descent, and Nesterov Accelerated Gradient Descent (NAGD). I also developed a custom Armijo backtracking line search to determine adaptive step sizes. These algorithms were then tested across convex and non-convex functions, as well as on a signal denoising task, to analyze their convergence behavior and robustness.</p>
+    
+        <h3>Details</h3>
+    
+        <p>
+          The study begins with the classical <strong>Steepest Descent</strong> and <strong>Momentum Gradient Descent</strong> methods. Momentum improves upon the standard approach by incorporating a velocity term that helps the optimizer maintain direction and accelerate through shallow regions.
+        </p>
+    
+        <p>
+          <strong>Nesterov’s Accelerated Gradient Descent (NAGD)</strong> refines this idea further by predicting the next position before computing the gradient, leading to faster convergence and improved handling of ill-conditioned functions. The algorithm’s dynamics are governed by:
+        </p>
+    
+        \[
+        x_{i+1} = y_i - \tau_i \nabla f(y_i)
+        \]
+        \[
+        y_{i+1} = x_{i+1} + \frac{\lambda_i - 1}{\lambda_{i+1}} (x_{i+1} - x_i)
+        \]
+    
+        <p>
+          where the momentum parameter \( \lambda_i \) evolves according to:
+        </p>
+    
+        \[
+        \lambda_0 = 0, \quad \lambda_{i+1} = \frac{1 + \sqrt{1 + 4\lambda_i^2}}{2}
+        \]
+    
+        <p>
+          To ensure convergence and stability, I implemented an <strong>Armijo Backtracking Line Search</strong>. This strategy adaptively selects the step size \( \tau \) based on a sufficient decrease condition:
+        </p>
+    
+        \[
+        f(x) \leq f(y) + \langle \nabla f(y), x - y \rangle + \frac{1}{2\tau} \|x - y\|^2
+        \]
+    
+        <p>
+          The step size \( \tau \) is chosen as:
+        </p>
+    
+        \[
+        \tau = \frac{1}{2^m}, \quad \text{where } m \text{ is the smallest integer for which the condition holds.}
+        \]
+    
+        <p>
+          I applied this framework to a variety of test scenarios, including <strong>convex functions, non-convex functions</strong>, and a real-world <strong>signal denoising task</strong>. Each algorithm’s performance was assessed based on convergence speed, stability, and accuracy. NAGD consistently demonstrated superior behavior in terms of stability and fast convergence.
+        </p>
+        <h3>Rotated Hyper-Ellipsoid Function</h3>
+
+        <p>
+          This convex benchmark function is defined as:
+        </p>
+        
+        \[
+        f(x) = \sum_{i=1}^{n} \left( \sum_{j=1}^i x_j \right)^2, \quad n = 10, 100
+        \]
+        
+        <p>
+          It has a global minimum at the origin:
+        </p>
+        
+        \[
+        f(0,0,\dots,0) = 0
+        \]
+        
+        <p>
+          The stopping criterion used was:
+        </p>
+        
+        \[
+        |f(x_n) - f(x_{n-1})| < 10^{-6}
+        \]
+        
+        <h4>Results Table</h4>
+        <div class="table-wrapper">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Scheme</th>
+                <th>Iterations (N=10)</th>
+                <th>Value</th>
+                <th>Iterations (N=100)</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Steepest Descent</td>
+                <td>407</td>
+                <td>7.188e-5</td>
+                <td>23304</td>
+                <td>0.008</td>
+              </tr>
+              <tr>
+                <td>SD with Momentum</td>
+                <td>101</td>
+                <td>2.816e-5</td>
+                <td>3833</td>
+                <td>0.001</td>
+              </tr>
+              <tr>
+                <td>NAGD Fixed</td>
+                <td>91</td>
+                <td>0.0001</td>
+                <td>1609</td>
+                <td>0.0003</td>
+              </tr>
+              <tr>
+                <td>NAGD</td>
+                <td>65</td>
+                <td>0.0007</td>
+                <td>673</td>
+                <td>0.0007</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3>Ackley's Function</h3>
+
+        <p>
+          The Ackley function is defined as:
+        </p>
+        
+        \[
+        f(\mathbf{x}) = -a \exp \left( -b \sqrt{\frac{1}{d} \sum_{i=1}^{d} x_i^2} \right) - \exp \left( \frac{1}{d} \sum_{i=1}^{d} \cos(c x_i) \right) + a + \exp(1)
+        \]
+        
+        <p>
+          where \( a = 20 \), \( b = 0.2 \), \( c = 2\pi \). This is a non-convex function commonly used to test convergence behavior of optimizers.
+        </p>
+        
+        <h4>Results Table</h4>
+        <div class="table-wrapper">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Iterations</th>
+                <th>Gradient Norm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nesterov w/o line search (fixed param)</td>
+                <td>25</td>
+                <td>1.263e-07</td>
+              </tr>
+              <tr>
+                <td>Nesterov w/o line search</td>
+                <td>33</td>
+                <td>2.718e-05</td>
+              </tr>
+              <tr>
+                <td>Momentum Gradient Descent</td>
+                <td>86</td>
+                <td>9.608e-07</td>
+              </tr>
+              <tr>
+                <td>Vanilla Gradient Descent</td>
+                <td>55</td>
+                <td>8.291e-07</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4>Trajectories</h4>
+        
+        <div class="figure-grid">
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/ackley_fp/ackley_fp-1.png" alt="Ackley NAGD FP" />
+            <p class="caption">Nesterov w/o Line Search (Fixed Parameter)</p>
+          </div>
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/ackley_vp/ackley_vp-1.png" alt="Ackley NAGD VP" />
+            <p class="caption">Nesterov w/o Line Search</p>
+          </div>
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/ackley_mgd/ackley_mgd-1.png" alt="Ackley MGD" />
+            <p class="caption">Momentum Gradient Descent</p>
+          </div>
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/ackley_gd/ackley_gd-1.png" alt="Ackley GD" />
+            <p class="caption">Vanilla Gradient Descent</p>
+          </div>
+        </div>
+        
+        <h3>Styblinski–Tang Function</h3>
+
+        <p>
+          The Styblinski–Tang function is defined as:
+        </p>
+        
+        \[
+        f(\mathbf{x}) = \sum_{i=1}^{d} \left( \frac{x_i^4 - 16x_i^2 + 5x_i}{2} \right)
+        \]
+        
+        <p>
+          This function has four local minima and one global minimum, making it useful for evaluating the performance of optimizers on non-convex landscapes.
+        </p>
+        
+        <h4>Results Table</h4>
+        <div class="table-wrapper">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Iterations</th>
+                <th>Minimum Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nesterov with Line Search (Variable Param)</td>
+                <td>9</td>
+                <td>4.563e-04</td>
+              </tr>
+              <tr>
+                <td>Nesterov w/o Line Search (Fixed Param)</td>
+                <td>14</td>
+                <td>9.758e-04</td>
+              </tr>
+              <tr>
+                <td>Nesterov w/o Line Search</td>
+                <td>10</td>
+                <td>1.774e-04</td>
+              </tr>
+              <tr>
+                <td>Gradient Descent with Momentum</td>
+                <td>104</td>
+                <td>5.630e-05</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4>Optimization Trajectories</h4>
+        
+        <div class="figure-grid">
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/st_ls_vp/st_ls_vp-1.png" alt="ST LS VP" />
+            <p class="caption">Nesterov with Line Search (Variable Parameter)</p>
+          </div>
+        
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/st_fp/st_fp-1.png" alt="ST FP" />
+            <p class="caption">Nesterov Fixed Parameter (w/o Line Search)</p>
+          </div>
+        
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/st_mgd/st_mgd-1.png" alt="ST MGD" />
+            <p class="caption">Momentum Gradient Descent</p>
+          </div>
+        
+          <div class="figure">
+            <img src="../graphics/projects/opt-algos/st_gd/st_gd-1.png" alt="ST GD" />
+            <p class="caption">Vanilla Gradient Descent</p>
+          </div>
+        </div>
+        
+    
+        </section>
+    </main>
+    
