@@ -1,112 +1,265 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Projects - Robotic Arm</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Robotic Arm Optimization</title>
   <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
-        <a href="../index.html">
-          <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
-        </a>
-        <h1>Lefteris Polychronakis</h1>
-        <p class="role">Research Assistant at FORTH</p>
-        <p class="location">Based in Heraklion, Greece</p>
-  
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
-          <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
-          <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+      <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
+      <h1>Lefteris Polychronakis</h1>
+      <p class="role">Research Assistant at FORTH</p>
+      <p class="location">Based in Heraklion, Greece</p>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+      </div>
+
+      <div class="about">
+        <h3>About</h3>
+        <p>MSc in Computer Science and Engineering at the University of Crete, with a Mathematics BSc and research experience at ICS/FORTH in uncertainty-aware fusion, probabilistic forecasting, and machine learning systems.</p>
+      </div>
+
+      <div class="skills">
+        <h3>Skills</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>SQL</span>
+          <span>LaTeX</span>
+          <span>C</span>
+          <span>Machine Learning</span>
+          <span>Statistics</span>
+          <span>Linear Algebra</span>
         </div>
-  
-        <div class="about">
-          <h3>About</h3>
-          <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
-        </div>
-  
-        <div class="skills">
-          <h3>Skills</h3>
-          <div class="tags">
-            <span>Python</span>
-            <span>SQL</span>
-            <span>LaTeX</span>
-            <span>C</span>
-            <span>Machine Learning</span>
-            <span>Statistics</span>
-            <span>Linear Algebra</span>
-          </div>
-        </div>
-  
-        <div class="languages">
-          <h3>Languages</h3>
-          <ul>
-            <li>Greek (Native)</li>
-            <li>English (Fluent)</li>
-            <li>German (Elementary)</li>
-          </ul>
-        </div>
-  
-        <div class="interests">
-          <h3>Hobbies & Interests</h3>
-          <ul>
-            <li>🚣‍♂️ Competitive Kayaking</li>
-            <li>🏔️ Hiking & Nature</li>
-            <li>🏺 History</li>
-            <li>🌍 Geopolitics</li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="languages">
+        <h3>Languages</h3>
+        <ul>
+          <li>Greek (Native)</li>
+          <li>English (Fluent)</li>
+          <li>German (Elementary)</li>
+        </ul>
+      </div>
+
+      <div class="interests">
+        <h3>Hobbies & Interests</h3>
+        <ul>
+          <li>🚣‍♂️ Competitive Kayaking</li>
+          <li>🏔️ Hiking & Nature</li>
+          <li>🏺 History</li>
+          <li>🌍 Geopolitics</li>
+        </ul>
+      </div>
     </aside>
     <main class="main-content">
       <section class="details-block">
-        <a href="../projects/projects.html" class="back-arrow">← Back to Projects</a>
+        <a href="./projects.html" class="back-arrow">← Back to Projects</a>
     
         <h2>Optimizing the Trajectory of a Robotic Arm</h2>
     
-        <img src="../graphics/projects/project-images/robotic-arm.jpg" alt="Robotic Arm" class="details-img" />
+        <img src="../graphics/projects/project-images/robotic-arm.jpg" alt="Robotic arm visualization" class="details-img" />
     
         <div class="tags">
           <span>Python</span>
-          <span>Control Theory</span>
-          <span>Simulation</span>
           <span>Optimization</span>
+          <span>Forward Kinematics</span>
+          <span>Inverse Kinematics</span>
+          <span>VPython</span>
         </div>
     
-        <p><strong>Brief:</strong> This project focuses on optimizing the trajectory of a robotic arm in both 2D and 3D space. By leveraging forward kinematics and gradient-based optimization, the goal is to guide the arm’s end-effector toward a target point with minimal error. Implemented in Python, the system models joint behavior and applies numerical techniques to find optimal joint angles through simulation and cost minimization.</p>
+        <p><strong>Brief:</strong> This project is a direct application of the methods developed in my <a href="opt-algos.html">optimization algorithms project</a>. Instead of optimizing benchmark functions, I optimized the joint parameters of a robotic arm so that its end-effector reaches a target point in 2D and 3D space. The project combines forward kinematics, analytically derived gradients, Armijo backtracking line search, and 3D visualization in Python.</p>
     
-        <h3>Details</h3>
-
-        <p>
-          In the 2D setup, we modeled a two-link robotic arm where the position of the end-effector was derived using forward kinematics. The goal was to minimize the Euclidean distance between the arm's hand and a desired target point by adjusting the joint angles using gradient-based optimization. We derived and implemented analytical gradients of the cost function with respect to each joint angle.
-        </p>
-
-        <p>
-          For the 3D extension, the robotic arm consists of three segments, each represented by two angles: azimuth (θ) and elevation (ϕ). The arm's movement was modeled using <strong>spherical coordinates</strong> to capture the spatial orientation of each joint. This allowed for smooth and realistic simulation of the arm's trajectory in three dimensions.
-        </p>
-
-        <p>
-          A key challenge was determining the optimal step size during gradient descent. To address this, we implemented the <strong>Armijo backtracking line search</strong> method. This approach dynamically adjusts the step size based on a sufficient decrease condition, ensuring fast convergence while preventing overshooting and oscillations of the arm.
-        </p>
-
-        <p>
-          For visualizing the movement and optimization process, we used <strong>VPython</strong> to animate the robotic arm in 3D space. This provided an intuitive representation of how the arm adjusts its joints in real-time to reach the target, making the results both interpretable and visually engaging.
-        </p>
-
-        <p>
-          Among the optimization techniques tested, <strong>Nesterov Accelerated Gradient Descent (NAGD)</strong> consistently outperformed traditional Gradient Descent in both speed and convergence quality. The results were verified using numerical metrics and visual animation.
-        </p>
-
+        <h3>Project Overview</h3>
     
+        <p>The goal was to formulate target-reaching for a robotic arm as a numerical optimization problem. Given a desired point in space, the task is to find joint angles that minimize the squared distance between the end-effector and that target. This reframes motion planning as loss minimization: each optimization step updates the posture of the robot, and convergence corresponds to the arm reaching the target with minimal error.</p>
+    
+        <p>Conceptually, this project extends my earlier work on first-order optimization into a more physically interpretable system. The same optimization logic is reused, but the objective function is now defined by the geometry of the robotic arm.</p>
+    
+        <h3>2D Formulation</h3>
+        <p>
+          I first studied a planar two-link robot arm with link lengths \(L_1\) and \(L_2\), and joint
+          angles \(\theta_1\) and \(\theta_2\). The end-effector position is given by the forward-kinematics map:
+        </p>
+
+        \[
+        p_{\text{hand}}(\theta_1,\theta_2)=
+        \begin{bmatrix}
+        x_{\text{hand}}(\theta_1,\theta_2) \\
+        y_{\text{hand}}(\theta_1,\theta_2)
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        L_1 \cos(\theta_1) + L_2 \cos(\theta_1+\theta_2) \\
+        L_1 \sin(\theta_1) + L_2 \sin(\theta_1+\theta_2)
+        \end{bmatrix}
+        \]
+
+        <p>
+          For a target point \(p_{\text{target}} = (x_t, y_t)\), the objective is the squared Euclidean distance:
+        </p>
+
+        \[
+        J(\theta_1,\theta_2)=\|p_{\text{hand}} - p_{\text{target}}\|^2
+        =
+        (x_h(\theta_1,\theta_2)-x_t)^2 + (y_h(\theta_1,\theta_2)-y_t)^2
+        \]
+
+        <p>
+          I derived the analytical gradients with respect to each angle and used them inside
+          gradient-based optimization routines:
+        </p>
+
+        \[
+        \frac{\partial J}{\partial \theta_1}
+        =
+        2(x_h-x_t)\big(-L_1\sin(\theta_1)-L_2\sin(\theta_1+\theta_2)\big)
+        +
+        2(y_h-y_t)\big(L_1\cos(\theta_1)+L_2\cos(\theta_1+\theta_2)\big)
+        \]
+
+        \[
+        \frac{\partial J}{\partial \theta_2}
+        =
+        2(x_h-x_t)\big(-L_2\sin(\theta_1+\theta_2)\big)
+        +
+        2(y_h-y_t)\big(L_2\cos(\theta_1+\theta_2)\big)
+        \]
+
+        <p>
+          This setup provides a clean inverse-kinematics problem: optimize the joint configuration
+          until the hand reaches the desired location with minimal error.
+        </p>
+
+        <h3>3D Extension</h3>
+        <p>
+          I then extended the system to a 3-joint robotic arm in 3D. Each joint is parameterized by
+          an azimuth angle \(\theta\) and an elevation angle \(\phi\), which allows the arm to be modeled
+          in spherical coordinates.
+        </p>
+
+        <p>
+          With segment lengths \(L_1\), \(L_2\), and \(L_3\), the coordinates of the arm are:
+        </p>
+
+        \[
+        x_1 = L_1 \sin\phi_1 \cos\theta_1,\quad
+        y_1 = L_1 \sin\phi_1 \sin\theta_1,\quad
+        z_1 = L_1 \cos\phi_1
+        \]
+
+        \[
+        x_2 = x_1 + L_2 \sin\phi_2 \cos(\theta_1+\theta_2),\quad
+        y_2 = y_1 + L_2 \sin\phi_2 \sin(\theta_1+\theta_2),\quad
+        z_2 = z_1 + L_2 \cos\phi_2
+        \]
+
+        \[
+        x_3 = x_2 + L_3 \sin\phi_3 \cos(\theta_1+\theta_2+\theta_3),\quad
+        y_3 = y_2 + L_3 \sin\phi_3 \sin(\theta_1+\theta_2+\theta_3),\quad
+        z_3 = z_2 + L_3 \cos\phi_3
+        \]
+
+        <p>
+          The corresponding loss function is:
+        </p>
+
+        \[
+        L(\theta_1,\phi_1,\theta_2,\phi_2,\theta_3,\phi_3)
+        =
+        (x_3-x_t)^2 + (y_3-y_t)^2 + (z_3-z_t)^2
+        \]
+
+        <p>
+          In the Python implementation, I used segment lengths
+          \(L_1 = 0.5\), \(L_2 = 0.7\), and \(L_3 = 0.5\), and evaluated the optimization on target-reaching
+          tasks in 3D space.
+        </p>
+
+        <h3>Optimization Strategy</h3>
+        <p>
+          To optimize the joint variables, I reused first-order methods from the earlier optimization
+          project, especially Gradient Descent and Nesterov Accelerated Gradient Descent (NAGD).
+          A key component was <strong>Armijo backtracking line search</strong>, which adaptively selects the
+          step size to ensure sufficient decrease in the objective while avoiding unstable updates.
+        </p>
+
+        <p>
+          This is important in robotic-arm optimization because the loss landscape can be sensitive to
+          angle updates: an overly large step may overshoot the target, while a very small step can make
+          convergence unnecessarily slow. Armijo backtracking provided a stable and efficient compromise.
+        </p>
+
+        <h3>Results</h3>
+        <p>
+          For the 3D simulation, I tested the methods on the target point
+          \((0.6, 1.5, -0.73)\) with stopping criterion
+          \(\|f(x_i) - f(x_{i-1})\|_2 &lt; 10^{-6}\).
+          NAGD converged much faster than standard Gradient Descent while also reaching a lower final objective value.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Iterations</th>
+                <th>Minimum Value</th>
+                <th>Gradient Norm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>NAGD</td>
+                <td>32</td>
+                <td>5.47e-07</td>
+                <td>0.0019</td>
+              </tr>
+              <tr>
+                <td>Gradient Descent</td>
+                <td>126</td>
+                <td>8.55e-06</td>
+                <td>5.8 × 10<sup>-5</sup></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          In practice, this confirmed what I had already observed on benchmark functions:
+          momentum-based first-order methods can provide a substantial advantage when the optimization
+          landscape is more demanding. Here, that translated into faster target-reaching and better
+          simulation behavior for the robotic arm.
+        </p>
+
+        <h3>Visualization</h3>
+        <p>
+          I used <strong>VPython</strong> to animate the 3D robotic arm and visualize how the joints evolve during
+          optimization. This made the behavior of the algorithms much easier to interpret: instead of
+          only inspecting convergence curves, I could directly observe the posture updates and the final
+          approach to the target point.
+        </p>
+
         <div class="video-container">
-          <iframe 
-            width="100%" 
-            height="315" 
-            src="https://www.youtube.com/watch?v=VYm_BJp2MgU" 
-            title="Robotic Arm Simulation" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/VYm_BJp2MgU"
+            title="Robotic Arm Simulation"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
       </section>
     </main>
-    
+  </div>
+</body>
+</html>

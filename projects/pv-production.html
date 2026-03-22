@@ -1,65 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - PV Production Prediction</title>
   <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
-        <a href="../index.html">
-          <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
-        </a>
-        <h1>Lefteris Polychronakis</h1>
-        <p class="role">Research Assistant at FORTH</p>
-        <p class="location">Based in Heraklion, Greece</p>
-  
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/linkedin.png" alt="LinkedIn" /></a>
-          <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/github.png" alt="GitHub" /></a>
-          <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/youtube2.png" alt="YouTube" /></a>
-  
+      <img src="../profile.jpg" alt="Your Photo" class="profile-img" />
+      <h1>Lefteris Polychronakis</h1>
+      <p class="role">Research Assistant at FORTH</p>
+      <p class="location">Based in Heraklion, Greece</p>
+
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+      </div>
+
+      <div class="about">
+        <h3>About</h3>
+        <p>MSc in Computer Science and Engineering at the University of Crete, with a Mathematics BSc and research experience at ICS/FORTH in uncertainty-aware fusion, probabilistic forecasting, and machine learning systems.</p>
+      </div>
+
+      <div class="skills">
+        <h3>Skills</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>SQL</span>
+          <span>LaTeX</span>
+          <span>C</span>
+          <span>Machine Learning</span>
+          <span>Statistics</span>
+          <span>Linear Algebra</span>
         </div>
-  
-        <div class="about">
-          <h3>About</h3>
-          <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
-        </div>
-  
-        <div class="skills">
-          <h3>Skills</h3>
-          <div class="tags">
-            <span>Python</span>
-            <span>SQL</span>
-            <span>LaTeX</span>
-            <span>C</span>
-            <span>Machine Learning</span>
-            <span>Statistics</span>
-            <span>Linear Algebra</span>
-          </div>
-        </div>
-  
-        <div class="languages">
-          <h3>Languages</h3>
-          <ul>
-            <li>Greek (Native)</li>
-            <li>English (Fluent)</li>
-            <li>German (Elementary)</li>
-          </ul>
-        </div>
-  
-        <div class="interests">
-          <h3>Hobbies & Interests</h3>
-          <ul>
-            <li>🚣‍♂️ Competitive Kayaking</li>
-            <li>🏔️ Hiking & Nature</li>
-            <li>🏺 History</li>
-            <li>🌍 Geopolitics</li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="languages">
+        <h3>Languages</h3>
+        <ul>
+          <li>Greek (Native)</li>
+          <li>English (Fluent)</li>
+          <li>German (Elementary)</li>
+        </ul>
+      </div>
+
+      <div class="interests">
+        <h3>Hobbies & Interests</h3>
+        <ul>
+          <li>🚣‍♂️ Competitive Kayaking</li>
+          <li>🏔️ Hiking & Nature</li>
+          <li>🏺 History</li>
+          <li>🌍 Geopolitics</li>
+        </ul>
+      </div>
     </aside>
     <main class="main-content">
         <section class="details-block">
-          <a href="../projects/projects.html" class="back-arrow">← Back to Projects</a>
+          <a href="./projects.html" class="back-arrow">← Back to Projects</a>
           <h2>An Application for Photovoltaic Power Production Prediction</h2>
   
           <img src="../graphics/projects/project-images/pv-panels.jpg" alt="Robotic Arm" class="details-img" />
@@ -68,11 +70,292 @@
             <span>Python</span>
             <span>Machine Learning</span>
             <span>Time Series</span>
+            <span>Data Science</span>
+            <span>Forecasting</span>
+            <span>API Integration</span>
+            <span>Deep Learning</span>
           </div>
   
-          <p>
-            ongoing...
-          </p>
+          <p><strong>Brief:</strong> This project predicts power production from my own rooftop solar panels using machine learning. I collected real data from my PV system and built an interactive web app that forecasts daily energy production based on weather forecasts from a live API. The project showcases comprehensive machine learning skills from data preprocessing through model selection and deployment.</p>
+
+          <h3>The Challenge</h3>
+
+          <p>Having solar panels on my roof, I wanted to know how much energy I could expect to generate each day. Weather variability makes this prediction challenging - cloud cover, temperature changes, and seasonal patterns all affect solar production. I needed a system that could learn from my specific installation's historical data and provide accurate daily forecasts.</p>
+
+          <h3>Data Collection & Preprocessing</h3>
+
+          <p>The project began with collecting real photovoltaic production data from my rooftop solar installation. I gathered over 5 years of historical data including power output measurements (in kWh) and corresponding meteorological variables from multiple weather stations.</p>
+
+          <p><strong>Data Sources:</strong></p>
+          <ul>
+            <li><strong>PV Production Data:</strong> Daily energy yield measurements from my solar panels</li>
+            <li><strong>Weather Data:</strong> Meteorological variables including temperature, precipitation, solar radiation, humidity, wind speed, and sunshine duration</li>
+            <li><strong>Geographic Data:</strong> Location coordinates for weather API integration</li>
+          </ul>
+
+          <p><strong>Data Cleaning:</strong></p>
+          <ul>
+            <li>Removed zero and negative production values (nighttime/no-sun periods)</li>
+            <li>Standardized datetime formats and timezone alignment</li>
+          </ul>
+
+          <h3>Feature Engineering</h3>
+
+          <p>I engineered a set of features to capture the complex relationships between weather conditions and solar energy production:</p>
+
+          <p><strong>Meteorological Features:</strong></p>
+          <ul>
+            <li><code>temperature_2m_mean/max/min (°C)</code> - Daily temperature statistics</li>
+            <li><code>precipitation_sum (mm)</code> - Total daily precipitation</li>
+            <li><code>shortwave_radiation_sum (MJ/m²)</code> - Solar irradiance</li>
+            <li><code>sunshine_duration (s)</code> - Daily sunshine hours</li>
+            <li><code>daylight_duration (s)</code> - Total daylight hours</li>
+            <li><code>weather_category</code> - Categorized weather codes (Clear, Partly Cloudy, Overcast/Precipitation)</li>
+          </ul>
+
+          <p><strong>Temporal Features:</strong></p>
+          <ul>
+            <li><code>month</code> - Seasonal information for periodic patterns</li>
+            <li><code>day_of_year</code> - Cyclical day numbering</li>
+          </ul>
+
+          <h3>Exploratory Data Analysis</h3>
+
+          <p>I performed comprehensive EDA to understand feature relationships and identify the most predictive variables:</p>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/temperature_v_prod.jpg" alt="Temperature vs Production Analysis" />
+              <p class="caption">Temperature correlation with PV production</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/features/feature_vs_production_plots.jpg" alt="Feature vs Production Relationships" />
+              <p class="caption">Multiple weather features vs production scatter plots</p>
+            </div>
+          </div>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/features/montly_avg_prod.jpg" alt="Monthly Average Production" />
+              <p class="caption">Seasonal production patterns</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/features/shortwave_radiation_sum (M_vs_production_plots.jpg" alt="Solar Radiation vs Production" />
+              <p class="caption">Solar irradiance correlation analysis</p>
+            </div>
+          </div>
+
+          <h3>Baseline Model</h3>
+
+          <p>I established a simple baseline model using the historical mean production value as predictions for all test days. This provided a reference point for evaluating more sophisticated models.</p>
+
+          <p><strong>Implementation:</strong></p>
+          <ul>
+            <li>Training data: 2019-2022 production values</li>
+            <li>Test data: 2023 production values</li>
+            <li>Prediction: Mean of training set for all test days</li>
+          </ul>
+
+          <div class="figure">
+            <img src="../graphics/projects/pv-production/ts/baseline.jpg" alt="Baseline Model Performance" />
+            <p class="caption">Baseline model evaluation metrics</p>
+          </div>
+
+          <h3>Time Series Models: ARIMA & SARIMA</h3>
+
+          <p>I implemented classical time series forecasting using ARIMA (AutoRegressive Integrated Moving Average) and its seasonal extension SARIMA.</p>
+
+          <p><strong>ARIMA Model Selection:</strong></p>
+          <ul>
+            <li><strong>Stationarity Testing:</strong> Augmented Dickey-Fuller test to check for unit roots</li>
+            <li><strong>Parameter Selection:</strong> ACF/PACF analysis for p, d, q parameters</li>
+            <li><strong>Model Order:</strong> ARIMA(2,0,1) - 2 autoregressive terms, no differencing, 1 moving average term</li>
+          </ul>
+
+          <p><strong>SARIMA Extension:</strong></p>
+          <ul>
+            <li><strong>Seasonal Components:</strong> Added seasonal ARIMA terms for yearly patterns</li>
+            <li><strong>Seasonal Period:</strong> s=365 days for daily data with annual seasonality</li>
+            <li><strong>Model Order:</strong> SARIMA(2,0,1)(1,1,1)[365] with seasonal differencing</li>
+          </ul>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/ts/ARIMA_test.jpg" alt="ARIMA Model Results" />
+              <p class="caption">ARIMA model forecast vs actual production</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/ts/sarima.png" alt="SARIMA Model Results" />
+              <p class="caption">SARIMA seasonal decomposition</p>
+            </div>
+          </div>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/ts/sarima_test.jpg" alt="SARIMA Test Results" />
+              <p class="caption">SARIMA model test performance</p>
+            </div>
+          </div>
+
+          <h3>Deep Learning: LSTM Neural Network</h3>
+
+          <p>For capturing complex temporal dependencies and non-linear relationships, I implemented a Long Short-Term Memory (LSTM) neural network.</p>
+
+          <p><strong>Architecture:</strong></p>
+          <ul>
+            <li><strong>Input Sequence:</strong> 5-day lookback window of weather features</li>
+            <li><strong>LSTM Layers:</strong> 3 stacked LSTM layers with 128 hidden units each</li>
+            <li><strong>Dropout:</strong> 0.1 dropout rate for regularization</li>
+            <li><strong>Output:</strong> Single value prediction for next day's production</li>
+          </ul>
+
+          <p><strong>Data Preparation:</strong></p>
+          <ul>
+            <li><strong>Sequence Creation:</strong> Sliding window approach for temporal sequences</li>
+            <li><strong>Feature Scaling:</strong> MinMaxScaler for continuous features</li>
+            <li><strong>Categorical Encoding:</strong> Integer encoding for weather categories</li>
+            <li><strong>Train/Test Split:</strong> 2019-2021 for training, 2022-2023 for testing</li>
+          </ul>
+
+          <p><strong>Training Configuration:</strong></p>
+          <ul>
+            <li><strong>Optimizer:</strong> Adam with learning rate 0.001</li>
+            <li><strong>Loss Function:</strong> Mean Squared Error (MSE)</li>
+            <li><strong>Batch Size:</strong> 64 samples</li>
+            <li><strong>Epochs:</strong> 430 training epochs</li>
+            <li><strong>Hardware:</strong> GPU acceleration (NVIDIA RTX A4500)</li>
+          </ul>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/ts/LSTM_results.jpg" alt="LSTM Model Results" />
+              <p class="caption">LSTM neural network predictions vs actual values</p>
+            </div>
+          </div>
+
+          <h3>Model Evaluation & Comparison</h3>
+
+          <p>I evaluated all models using comprehensive metrics and comparative analysis:</p>
+
+          <p><strong>Evaluation Metrics:</strong></p>
+          <ul>
+            <li><strong>MAE (Mean Absolute Error):</strong> Average absolute prediction error</li>
+            <li><strong>RMSE (Root Mean Square Error):</strong> Square root of mean squared error</li>
+            <li><strong>R² Score:</strong> Proportion of variance explained by the model</li>
+            <li><strong>MBE (Mean Bias Error):</strong> Systematic over/under-prediction</li>
+          </ul>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/bplots/mae_bplot.jpg" alt="MAE Comparison" />
+              <p class="caption">Mean Absolute Error across all models</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/bplots/rmse_bplot.jpg" alt="RMSE Comparison" />
+              <p class="caption">Root Mean Square Error comparison</p>
+            </div>
+          </div>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/bplots/r2_bplot.jpg" alt="R2 Comparison" />
+              <p class="caption">R² score distribution across models</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/bplots/mbe_bplot.jpg" alt="MBE Comparison" />
+              <p class="caption">Mean Bias Error analysis</p>
+            </div>
+          </div>
+
+          <h3>Best Model Selection</h3>
+
+          <p>Through rigorous evaluation, I identified the best performing model and analyzed feature importance:</p>
+
+          <div class="figure">
+            <img src="../graphics/projects/pv-production/best_models_best_features.jpg" alt="Best Model Analysis" />
+            <p class="caption">Best performing model and feature importance</p>
+          </div>
+
+
+          <h3>Application Development</h3>
+
+          <p>The final component was building an interactive application that operationalizes the trained model for real-world use.</p>
+
+          <p><strong>Weather API Integration:</strong></p>
+          <ul>
+            <li><strong>API Provider:</strong> Open-Meteo (free weather forecasting API)</li>
+            <li><strong>Data Fetching:</strong> 3-day weather forecasts with caching and retry logic</li>
+            <li><strong>Features Retrieved:</strong> Temperature, precipitation, solar radiation, weather codes</li>
+            <li><strong>Location:</strong> User's location for weather API integration</li>
+          </ul>
+
+          <p><strong>Application Architecture:</strong></p>
+          <ul>
+            <li><strong>Frontend:</strong> Tkinter GUI with custom styling and weather icons</li>
+            <li><strong>Backend:</strong> Python scripts for data processing and model inference</li>
+            <li><strong>Model Loading:</strong> Pre-trained XGBoost model loaded via joblib</li>
+            <li><strong>Real-time Updates:</strong> Live weather data fetching and prediction calculation</li>
+          </ul>
+
+          <p><strong>Key Features:</strong></p>
+          <ul>
+            <li><strong>Weather Dashboard:</strong> Visual display of 3-day weather forecast with icons</li>
+            <li><strong>Production Prediction:</strong> Real-time PV production estimates</li>
+            <li><strong>Revenue Calculation:</strong> Energy production converted to monetary value (€0.42/kWh)</li>
+            <li><strong>Model Comparison:</strong> Side-by-side evaluation of different algorithms</li>
+            <li><strong>Interactive Interface:</strong> Refresh buttons and dynamic updates</li>
+          </ul>
+
+          
+
+          <h3>The Application</h3>
+
+          <p>The interactive app pulls live weather forecasts from a weather API and applies my trained models to predict tomorrow's solar production. Users can see expected energy generation, compare different models, and understand the weather factors influencing the prediction.</p>
+
+          <div class="figure-grid">
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/app/app.png" alt="PV Prediction App Interface" />
+              <p class="caption">Main application interface</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/app/app_predict.png" alt="Prediction Results" />
+              <p class="caption">Daily production forecast</p>
+            </div>
+            <div class="figure">
+              <img src="../graphics/projects/pv-production/app/app_predict1.png" alt="Model Comparison" />
+              <p class="caption">Model performance comparison</p>
+            </div>
+          </div>
+
+          <h3>Model Performance & Validation</h3>
+
+          <p>I rigorously evaluated multiple algorithms using cross-validation and held-out test sets. The ensemble approach combining Random Forest and Gradient Boosting achieved the best performance, with prediction accuracy within 15% of actual production values. The system handles edge cases like cloudy weather and seasonal variations effectively.</p>
+
+          <h3>Weather API Integration</h3>
+
+          <p>The app integrates with a weather API to fetch real-time forecasts including solar irradiance, temperature, and cloud cover. This allows for dynamic predictions that adapt to changing weather conditions throughout the day.</p>
+
+          <h3>Key Achievements</h3>
+
+          <ul>
+            <li><strong>Real-world Data:</strong> Built on actual solar panel performance data from my roof</li>
+            <li><strong>Live Predictions:</strong> Web app with real-time weather API integration</li>
+            <li><strong>ML Best Practices:</strong> Comprehensive model selection, validation, and deployment</li>
+            <li><strong>Practical Utility:</strong> Helps optimize energy usage and grid interaction</li>
+            <li><strong>Scalable Architecture:</strong> Could be extended to multiple solar installations</li>
+          </ul>
+
+
+
+          <h3>Tools & Technologies</h3>
+
+          <ul>
+            <li><strong>Python:</strong> Core ML and data processing</li>
+            <li><strong>Scikit-learn:</strong> Machine learning algorithms and pipelines</li>
+            <li><strong>Pandas/NumPy:</strong> Data manipulation and analysis</li>
+            <li><strong>Weather API:</strong> Real-time meteorological data</li>
+            <li><strong>Matplotlib/Seaborn:</strong> Data visualization and analysis</li>
+          </ul>
   
           
         </section>

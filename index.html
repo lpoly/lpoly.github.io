@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lefteris Polychronakis</title>
   <link rel="stylesheet" href="style.css" />
-</head>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 <body>
   <div class="container">
     <!-- Left Sidebar -->
@@ -23,7 +23,7 @@
 
       <div class="about">
         <h3>About</h3>
-        <p>Mathematics graduate, I enjoy applying mathematical desciplines in Data Science and Machine Learning.</p>
+        <p>MSc in Computer Science and Engineering at the University of Crete, with a Mathematics BSc and research experience at ICS/FORTH in uncertainty-aware fusion, probabilistic forecasting, and machine learning systems.</p>
       </div>
 
       <div class="skills">
@@ -66,23 +66,24 @@
           <h2>Projects</h2>
           <div class="projects">
             <div class="project">
-              <img src="./graphics/projects/project-images/robotic-arm.jpg" alt="Robotic-Arm project" />
-              <h3>Optimizing the Trajectory of a Robotic Arm </h3>
+              <a href="./projects/igarss-2026.html"><img src="./graphics/projects/project-images/cygnss-constellation.png" alt="IGARSS 2026 Research"></a>
+              <h3>Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</h3>
               <div class="tags">
-                <span>Python</span><span>Optimization</span>
+                <span>Python</span><span>Remote Sensing</span><span>Machine Learning</span><span>GNSS-R</span>
               </div>
-              <p>Used simulation and control theory to optimize robotic motion.</p>
-              <a href="./projects/robotic-arm.html">Read more →</a>
+              <p>IGARSS 2026 accepted paper on uncertainty-aware fusion of SMAP and CYGNSS data for soil moisture estimation.</p>
+              <a href="./projects/igarss-2026.html">Read more →</a>
             </div>
-      
+
+
             <div class="project">
-              <img src="./graphics/projects/project-images/sudoku.png" alt="Sudoku project" />
-              <h3>An Augmented Reality Sudoku Solver</h3>
+              <a href="./projects/pv-production.html"><img src="./graphics/projects/project-images/pv-panels.jpg" alt="PV Production Prediction"></a>
+              <h3>An Application for Photovoltaic Power Production Prediction</h3>
               <div class="tags">
-                 <span>Python</span><span>Control Theory</span><span>Simulation</span><span>Optimization</span>
+                <span>Python</span><span>Machine Learning</span><span>Time-Series</span>
               </div>
-              <p>Built a mobile app that solves Sudoku puzzles using live camera feed.</p>
-              <a href="./projects/sudoku.html">Read more →</a>
+              <p>Built an app for predicting PV production and revenue from rooftop solar panel data.</p>
+              <a href="./projects/pv-production.html">Read more →</a>
             </div>
           </div>
           <a href="./projects/projects.html" class="more-projects">More Projects →</a>
@@ -91,29 +92,84 @@
             
       <section class="experience">
         <h2>Experience</h2>
-      
+
         <div class="entry">
           <div class="entry-text">
             <strong>Graduate Research Assistant</strong>
-            <p>Scholarship beneficiary during my Master's. Research interests include Constrastive Learning for Time-Series, Uncertainty Quantification and Prediction Fusion for multi-modal Data Representations. </p>
+            <p>
+              Conducted research at the Signal Processing Lab, ICS/FORTH on uncertainty-aware
+              fusion for soil moisture estimation. Developed a framework combining CYGNSS GNSS-R
+              retrievals with a probabilistic SMAP L4 forecaster, using 1D Wasserstein-2 barycenter
+              fusion with fixed and adaptive weighting as well as quality-control gating. This work
+              improved both accuracy and calibration compared to single-source baselines and led to
+              the accepted IGARSS 2026 paper
+              <em>“Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation.”</em>
+            </p>
             <div class="tags">
-              <span>Python</span><span>PyTorch</span><span>Technical Writing</span>
+              <span>Python</span>
+              <span>Machine Learning</span>
+              <span>Probabilistic Modeling</span>
+              <span>Research</span>
+              <span>Technical Writing</span>
             </div>
           </div>
-          <div class="entry-date">Oct 2024 – present</div>
+          <div class="entry-date">Oct 2024 – Feb 2026</div>
         </div>
-      
+
+        <div class="entry">
+        <div class="entry-text">
+          <strong>Data Annotator & QA Reviewer</strong>
+          <p>
+            Worked remotely as a freelance data annotator and QA reviewer across more than 15
+            projects, with a 4.6/5 rating across 1000 reviews. Experience includes OCR, model
+            stumping, STEM problem rewording, page transcription, rubric-based evaluation, and
+            adversarial prompt testing.
+          </p>
+          <div class="tags">
+            <span>Data Annotation</span>
+            <span>Quality Assurance</span>
+            <span>OCR</span>
+            <span>LLM Evaluation</span>
+          </div>
+        </div>
+        <div class="entry-date">Feb 2025 – Present</div>
+      </div>
+
         <div class="entry">
           <div class="entry-text">
-            <strong>Private Tutoring</strong>
-            <p>Private tutoring for 2 students per semester in undergraduate Mathematics and Programming courses, including Linear
-              Algebra, Python, Discrete Mathematics, Probabilities, and Numerical Analysis. Message me on <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-               for tutoring sessions.</p>
+            <strong>Teaching Assistant</strong>
+            <p>
+              Supported undergraduate teaching for courses including Data Science, Python,
+              Discrete Mathematics, Probabilities, and Image Analysis. Assisted students with
+              course material, problem solving, and lab-based learning across both mathematical
+              and programming-focused subjects.
+            </p>
             <div class="tags">
-              <span>Tutoring</span><span>Presentations</span>
+              <span>Teaching</span>
+              <span>Python</span>
+              <span>Data Science</span>
+              <span>Mathematics</span>
             </div>
           </div>
-          <div class="entry-date">Sep 2022 – present</div>
+          <div class="entry-date">Sep 2022 – Jun 2026</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-text">
+            <strong>Private Tutor</strong>
+            <p>
+              Provided private tutoring for two students per semester in undergraduate Mathematics
+              and Programming courses, including Linear Algebra, Python, Discrete Mathematics,
+              Probabilities, and Numerical Analysis.
+            </p>
+            <div class="tags">
+              <span>Tutoring</span>
+              <span>Mathematics</span>
+              <span>Programming</span>
+              <span>Communication</span>
+            </div>
+          </div>
+          <div class="entry-date">Sep 2022 – Sep 2025</div>
         </div>
       </section>
       
@@ -124,7 +180,7 @@
         <div class="entry">
           <div class="entry-text">
             <strong>Computer Science and Engineering, MSc – University of Crete</strong>
-            <p>Specialized in Machine Learning and Artificial Intelligence</p>
+            <p>Grade: 9.8/10. Specialization: Machine Learning, Artificial Intelligence and Signal Processing</p>
           </div>
           <div class="entry-date">Feb 2024 – Feb 2026</div>
         </div>
@@ -132,7 +188,7 @@
         <div class="entry">
           <div class="entry-text">
             <strong>Mathematics, BSc – University of Crete</strong>
-            <p>Focusing on Applied Mathematics and particulary Mathematics of Machine Learning. Main courses: Linear Algebra, Machine Learning, Optimization, Python, Statistics, Algorithms, Numerical Analysis</p>
+            <p>Focusing on Applied Mathematics and particularly Mathematics of Machine Learning. Main courses: Linear Algebra, Machine Learning, Optimization, Python, Statistics, Algorithms, Numerical Analysis</p>
           </div>
           <div class="entry-date">Sep 2019 – Jan 2024</div>
         </div>
