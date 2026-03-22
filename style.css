@@ -373,3 +373,20 @@ html {
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #0070f3;
 }
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #666;
+  font-size: 0.9em;
+  border-top: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.footer p {
+  margin: 0;
+}
