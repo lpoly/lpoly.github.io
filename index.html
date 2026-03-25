@@ -1,207 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lefteris Polychronakis</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
 <body>
-  <div class="container">
-    <!-- Left Sidebar -->
-    <aside class="sidebar">
-      <a href="./index.html"><img src="profile.jpg" alt="Your Photo" class="profile-img" /></a>
-      <h1>Lefteris Polychronakis</h1>
-      <p class="role">MSc ML/AI graduate | Data Science / Machine Learning / Data Analyst</p>
-      <p class="location">Based in Heraklion, Greece</p>
+<div class="container">
 
+  <aside class="sidebar">
+    <div class="profile-block">
+      <a href="./index.html"><img src="profile.jpg" alt="Lefteris Polychronakis" class="profile-img"/></a>
+      <h1 class="profile-name">Lefteris<br>Polychronakis</h1>
+      <p class="profile-role">MSc ML / AI · Data Science<br>Machine Learning · Analytics</p>
+      <p class="profile-location">📍 Heraklion, Greece</p>
       <div class="socials">
-        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/linkedin.png" alt="LinkedIn" /></a>
-        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/github.png" alt="GitHub" /></a>
-        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="./graphics/general/youtube.png" alt="YouTube" /></a>
+        <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/lpoly" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis" target="_blank" rel="noopener" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
       </div>
-
-      <div class="about">
-        <h3>About</h3>
-        <p>MSc in Computer Science and Engineering with a Mathematics BSc and hands-on experience in Python, machine learning, time-series forecasting, and remote sensing. Currently seeking industry roles in Data Science, Machine Learning, or Data Analytics where I can contribute to real-world applications.</p>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">About</span>
+      <p class="sb-text">MSc in Computer Science &amp; Engineering with a Mathematics BSc. Hands-on experience in Python, ML, time-series forecasting, and remote sensing.</p>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">Skills</span>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Statistics</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">Probabilistic Modeling</span>
+        <span class="tag">Remote Sensing</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Computer Vision</span>
       </div>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">Languages</span>
+      <ul class="sb-list">
+        <li>Greek    <span class="meta">Native</span></li>
+        <li>English  <span class="meta">C2</span></li>
+        <li>German   <span class="meta">B2</span></li>
+      </ul>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">Interests</span>
+      <ul class="sb-list">
+        <li>🚣‍♂️ Competitive Kayaking</li>
+        <li>🏔️ Hiking &amp; Nature</li>
+        <li>🏺 History</li>
+        <li>🌍 Geopolitics</li>
+      </ul>
+    </div>
+  </aside>
 
-      <div class="skills">
-        <h3>Skills</h3>
-        <div class="tags">
-          <span>Python</span>
-          <span>Machine Learning</span>
-          <span>Data Analysis</span>
-          <span>Statistics</span>
-          <span>Time Series Forecasting</span>
-          <span>Probabilistic Modeling</span>
-          <span>Remote Sensing</span>
-          <span>SQL</span>
-          <span>Computer Vision</span>
-        </div>
+  <main class="main-content">
+
+    <section class="card">
+      <div class="section-hd">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-rule"></div>
       </div>
-
-      <div class="languages">
-        <h3>Languages</h3>
-        <ul>
-          <li>Greek (Native)</li>
-          <li>English (C2)</li>
-          <li>German (B2)</li>
-        </ul>
-      </div>
-
-      <div class="interests">
-        <h3>Hobbies & Interests</h3>
-        <ul>
-          <li>🚣‍♂️ Competitive Kayaking</li>
-          <li>🏔️ Hiking & Nature</li>
-          <li>🏺 History</li>
-          <li>🌍 Geopolitics</li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- Right Content Area -->
-    <main class="main-content">
-      <section class="projects-wrapper">
-        <div class="projects-block">
-          <h2>Projects</h2>
-          <div class="projects">
-            <div class="project">
-              <a href="./projects/igarss-2026.html"><img src="./graphics/projects/project-images/cygnss-constellation.png" alt="IGARSS 2026 Research"></a>
-              <h3>Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</h3>
-              <div class="tags">
-                <span>Python</span><span>Remote Sensing</span><span>Machine Learning</span><span>GNSS-R</span>
-              </div>
-              <p>IGARSS 2026 accepted paper on uncertainty-aware fusion of SMAP and CYGNSS data for soil moisture estimation.</p>
-              <a href="./projects/igarss-2026.html">Read more →</a>
-            </div>
-
-
-            <div class="project">
-              <a href="./projects/pv-production.html"><img src="./graphics/projects/project-images/pv-panels.jpg" alt="PV Production Prediction"></a>
-              <h3>An Application for Photovoltaic Power Production Prediction</h3>
-              <div class="tags">
-                <span>Python</span><span>Machine Learning</span><span>Time-Series</span>
-              </div>
-              <p>Built an app for predicting PV production and revenue from rooftop solar panel data.</p>
-              <a href="./projects/pv-production.html">Read more →</a>
-            </div>
-          </div>
-          <a href="./projects/projects.html" class="more-projects">More Projects →</a>
-        </div>
-      </section>
-            
-      <section class="experience">
-        <h2>Experience</h2>
-
-        <div class="entry">
-          <div class="entry-text">
-            <strong>Graduate Research Assistant</strong>
-            <p>
-              Conducted research at the Signal Processing Lab, ICS/FORTH on uncertainty-aware
-              fusion for soil moisture estimation. Developed a framework combining CYGNSS GNSS-R
-              retrievals with a probabilistic SMAP L4 forecaster, using 1D Wasserstein-2 barycenter
-              fusion with fixed and adaptive weighting as well as quality-control gating. This work
-              improved both accuracy and calibration compared to single-source baselines and led to
-              the accepted IGARSS 2026 paper
-              <a href="./projects/igarss-2026.html"><em>"Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation."</em></a>
-            </p>
+      <div class="projects-grid">
+        <a href="./projects/igarss-2026.html" class="proj-card">
+          <img src="./graphics/projects/project-images/cygnss-constellation.png" alt="IGARSS 2026" class="proj-img"/>
+          <div class="proj-body">
             <div class="tags">
-              <span>Python</span>
-              <span>Machine Learning</span>
-              <span>Probabilistic Modeling</span>
-              <span>Research</span>
-              <span>Technical Writing</span>
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">GNSS-R</span>
+              <span class="tag">Machine Learning</span>
             </div>
+            <h3 class="proj-title">Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</h3>
+            <p class="proj-desc">IGARSS 2026 accepted paper. Uncertainty-aware fusion of SMAP and CYGNSS data using 1D Wasserstein-2 barycenter methods with adaptive weighting and quality-control gating.</p>
+            <div class="proj-read">Read more →</div>
           </div>
-          <div class="entry-date">Oct 2024 – Feb 2026</div>
-        </div>
-
-        <div class="entry">
-        <div class="entry-text">
-          <strong>Data Annotator & QA Reviewer</strong>
-          <p>
-            Worked remotely as a freelance data annotator and QA reviewer across more than 15
-            projects, with a 4.6/5 rating across 1000 reviews. Experience includes OCR, model
-            stumping, STEM problem rewording, page transcription, rubric-based evaluation, and
-            adversarial prompt testing.
-          </p>
-          <div class="tags">
-            <span>Data Annotation</span>
-            <span>Quality Assurance</span>
-            <span>OCR</span>
-            <span>LLM Evaluation</span>
+        </a>
+        <a href="./projects/pv-production.html" class="proj-card">
+          <img src="./graphics/projects/project-images/pv-panels.jpg" alt="PV Production" class="proj-img"/>
+          <div class="proj-body">
+            <div class="tags">
+              <span class="tag">Time-Series</span>
+              <span class="tag">Python</span>
+              <span class="tag">Machine Learning</span>
+            </div>
+            <h3 class="proj-title">Photovoltaic Power Production Prediction</h3>
+            <p class="proj-desc">Application for predicting PV production and revenue from rooftop solar panel data, using machine learning forecasting models on real-world energy data.</p>
+            <div class="proj-read">Read more →</div>
           </div>
-        </div>
-        <div class="entry-date">Feb 2025 – Present</div>
+        </a>
       </div>
+      <a href="./projects/projects.html" class="more-btn">All Projects →</a>
+    </section>
 
-        <div class="entry">
-          <div class="entry-text">
-            <strong>Teaching Assistant</strong>
-            <p>
-              Supported undergraduate and graduate teaching for courses including Data Science, Python,
-              Discrete Mathematics, Probabilities, and Image Analysis. Assisted students with
-              course material, problem solving, and lab-based learning across both mathematical
-              and programming-focused subjects.
-            </p>
+    <section class="card">
+      <div class="section-hd">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">Graduate Research Assistant</div>
+            <p class="tl-desc">Designed an uncertainty-aware fusion framework for soil moisture estimation by combining CYGNSS GNSS-R retrievals with a probabilistic SMAP L4 forecaster. Implemented Wasserstein-2 barycenter fusion with adaptive weighting and quality-control gating, improving calibration and accuracy over single-source baselines; paper accepted at <a href="./projects/igarss-2026.html"><em>IGARSS 2026</em></a>.</p>
             <div class="tags">
-              <span>Teaching</span>
-              <span>Python</span>
-              <span>Data Science</span>
-              <span>Mathematics</span>
+              <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Probabilistic Modeling</span><span class="tag">Research</span><span class="tag">Technical Writing</span>
             </div>
           </div>
-          <div class="entry-date">Sep 2022 – Jun 2026</div>
+          <div class="tl-date">Oct 2024 – Feb 2026</div>
         </div>
-
-        <div class="entry">
-          <div class="entry-text">
-            <strong>Private Tutor</strong>
-            <p>
-              Provided private tutoring for two students per semester in undergraduate Mathematics
-              and Programming courses, including Linear Algebra, Python, Discrete Mathematics,
-              Probabilities, and Numerical Analysis.
-            </p>
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">AI Data Annotator</div>
+            <p class="tl-desc">Maintained a 4.6/5 quality rating across 1,000+ reviews in 15+ projects, delivering reliable training data for model development. Drove OCR validation, adversarial prompt testing, and rubric-based QA workflows to surface failure modes and improve labeling consistency.</p>
             <div class="tags">
-              <span>Tutoring</span>
-              <span>Mathematics</span>
-              <span>Programming</span>
-              <span>Communication</span>
+              <span class="tag">Data Annotation</span><span class="tag">QA</span><span class="tag">LLM Evaluation</span>
             </div>
           </div>
-          <div class="entry-date">Sep 2022 – Sep 2025</div>
+          <div class="tl-date">Feb 2025 – Present</div>
         </div>
-      </section>
-      
-
-      <section class="education">
-        <h2>Education</h2>
-
-        <div class="entry">
-          <div class="entry-text">
-            <strong>Computer Science and Engineering, MSc – University of Crete</strong>
-            <p>Grade: 9.8/10. Specialization: Machine Learning, Artificial Intelligence and Signal Processing</p>
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">Teaching Assistant</div>
+            <p class="tl-desc">Prepared and taught recitation sessions, designed exam papers, and graded student work across 5 courses (Data Science, Python, Discrete Mathematics, Probability, Image Analysis); all 5 professors rated me 4/4 in willingness, collaboration, availability, effectiveness, consistency, and initiative.</p>
+            <div class="tags">
+              <span class="tag">Teaching</span><span class="tag">Python</span><span class="tag">Data Science</span><span class="tag">Mathematics</span>
+            </div>
           </div>
-          <div class="entry-date">Feb 2024 – Feb 2026</div>
+          <div class="tl-date">Sep 2022 – Jun 2026</div>
         </div>
-
-        <div class="entry">
-          <div class="entry-text">
-            <strong>Mathematics, BSc – University of Crete</strong>
-            <p>Focusing on Applied Mathematics and particularly Mathematics of Machine Learning. Main courses: Linear Algebra, Machine Learning, Optimization, Python, Statistics, Algorithms, Numerical Analysis</p>
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">Private Tutor</div>
+            <p class="tl-desc">Tutored 2 undergraduate students per semester across 5 core Mathematics and Programming subjects (Linear Algebra, Python, Discrete Mathematics, Probability, Numerical Analysis); only 1 student did not pass their exams.</p>
+            <div class="tags">
+              <span class="tag">Mathematics</span><span class="tag">Programming</span><span class="tag">Communication</span>
+            </div>
           </div>
-          <div class="entry-date">Sep 2019 – Jan 2024</div>
+          <div class="tl-date">Sep 2022 – Sep 2025</div>
         </div>
-      
-      </section>
-      
-    </main>
-  </div>
+      </div>
+    </section>
 
-  <footer class="footer">
-    <p>Last updated: March 22, 2026</p>
-  </footer>
+    <section class="card">
+      <div class="section-hd">
+        <h2 class="section-title">Education</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">MSc Computer Science &amp; Engineering — University of Crete</div>
+            <p class="tl-desc">Grade: 9.8 / 10. Specialization: Machine Learning, Artificial Intelligence &amp; Signal Processing.</p>
+          </div>
+          <div class="tl-date">Feb 2024 – Feb 2026</div>
+        </div>
+        <div class="tl-entry">
+          <div>
+            <div class="tl-title">BSc Mathematics — University of Crete</div>
+            <p class="tl-desc">Applied Mathematics, focusing on ML theory. Core courses: Linear Algebra, Machine Learning, Optimization, Python, Statistics, Algorithms, Numerical Analysis.</p>
+          </div>
+          <div class="tl-date">Sep 2019 – Jan 2024</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<footer>Last updated: March 25, 2026</footer>
 </body>
 </html>

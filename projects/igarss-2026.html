@@ -1,334 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</title>
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IGARSS 2026 – Lefteris Polychronakis</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <a href="../index.html"><img src="../profile.jpg" alt="Your Photo" class="profile-img" /></a>
-      <h1>Lefteris Polychronakis</h1>
-      <p class="role">MSc ML/AI graduate | Data Science / Machine Learning / Data Analyst</p>
-      <p class="location">Based in Heraklion, Greece</p>
-
+<div class="container">
+  <aside class="sidebar">
+    <div class="profile-block">
+      <a href="../index.html"><img src="../profile.jpg" alt="Lefteris Polychronakis" class="profile-img"/></a>
+      <h1 class="profile-name">Lefteris<br>Polychronakis</h1>
+      <p class="profile-role">MSc ML / AI · Data Science<br>Machine Learning · Analytics</p>
+      <p class="profile-location">📍 Heraklion, Greece</p>
       <div class="socials">
-        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
-        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
-        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+        <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/lpoly" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis" target="_blank" rel="noopener" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="sb-section"><span class="sb-label">About</span><p class="sb-text">MSc in Computer Science &amp; Engineering with a Mathematics BSc. Hands-on experience in Python, ML, time-series forecasting, and remote sensing.</p></div>
+    <div class="sb-section"><span class="sb-label">Skills</span><div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Analysis</span><span class="tag">Statistics</span><span class="tag">Time Series</span><span class="tag">Probabilistic Modeling</span><span class="tag">Remote Sensing</span><span class="tag">SQL</span><span class="tag">Computer Vision</span></div></div>
+    <div class="sb-section"><span class="sb-label">Languages</span><ul class="sb-list"><li>Greek <span class="meta">Native</span></li><li>English <span class="meta">C2</span></li><li>German <span class="meta">B2</span></li></ul></div>
+    <div class="sb-section"><span class="sb-label">Interests</span><ul class="sb-list"><li>🚣‍♂️ Competitive Kayaking</li><li>🏔️ Hiking &amp; Nature</li><li>🏺 History</li><li>🌍 Geopolitics</li></ul></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="details-block">
+      <a href="./projects.html" class="back-arrow">← Back to Projects</a>
+      <h2>Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</h2>
+
+      <img src="../graphics/projects/igarss-2026/NASAs-Cyclone-Global-Navigation-Satellite-System-CYGNSS-mission-a-constellation-of.png" alt="CYGNSS satellite constellation" class="details-img"/>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Remote Sensing</span>
+        <span class="tag">Uncertainty Quantification</span><span class="tag">GNSS-R</span>
+        <span class="tag">Optimal Transport</span><span class="tag">Model Fusion</span>
       </div>
 
-      <div class="about">
-        <h3>About</h3>
-        <p>MSc in Computer Science and Engineering with a Mathematics BSc and hands-on experience in Python, machine learning, time-series forecasting, and remote sensing. Currently seeking industry roles in Data Science, Machine Learning, or Data Analytics where I can contribute to real-world applications.</p>
+      <h3>Brief</h3>
+      <p>Combines forecasts from SMAP L4 (time-series model with low latency) and retrievals from CYGNSS (satellite observations with inherent delay) into a single, calibrated soil-moisture estimate with uncertainty quantification. Fusion uses optimal transport to blend predictive distributions rather than simple averaging.</p>
+
+      <h3>The Problem</h3>
+      <p><strong>SMAP L4</strong> is a data assimilation model that produces high-quality soil moisture estimates but with ~2.5 days latency — by the time data is available, conditions have already changed. <strong>CYGNSS</strong> provides instantaneous measurements from satellite observations, but passes sparsely over any given location and carries observation noise.</p>
+      <p>The goal is to combine these two complementary information sources: leverage SMAP's temporal coherence and bias correction, while incorporating CYGNSS's real-time responsiveness. We fuse the full predictive distributions using a W₂ barycenter, with multiple weighting strategies to balance the two sources optimally.</p>
+
+      <h3>Method</h3>
+
+      <h4>Forecasting Leg: SMAP L4 Time-Series</h4>
+      <p>An ARIMAX (autoregressive integrated moving average with exogenous inputs) model propagates historical SMAP L4 soil moisture forward in time, producing a Gaussian predictive distribution for each forecast horizon H ∈ {2,3,4,5} days ahead.</p>
+
+      <h4>Retrieval Leg: CYGNSS Probabilistic Regression</h4>
+      <p>NGBoost (Natural Gradient Boosting) trains on CYGNSS delay–Doppler observations to construct a real-time, direct estimate of soil moisture as a probability distribution. This source responds to current satellite data but has higher noise.</p>
+
+      <h4>Fusion: Wasserstein-2 Barycenter</h4>
+      <p>Rather than averaging the two predictions as numbers, we average them as probability distributions using a <strong>W₂ barycenter</strong> (weighted average of quantile functions). This preserves uncertainty structure and enables calibrated prediction intervals.</p>
+
+      <p><strong>Weight Selection:</strong> Five strategies tested on validation data, then fixed for test evaluation:</p>
+      <ul>
+        <li><strong>Equal:</strong> 50–50 blend.</li>
+        <li><strong>RMSE-tuned:</strong> Optimizes for lowest prediction error (but may overfit).</li>
+        <li><strong>CRPS-tuned:</strong> Optimizes CRPS (Continuous Ranked Probability Score), a metric that rewards sharp, calibrated distributions.</li>
+        <li><strong>qMSE-tuned:</strong> Minimizes mean squared error in quantile space — balances prediction accuracy and interval width.</li>
+        <li><strong>L₂-CRPS:</strong> Linear pooling baseline using CRPS.</li>
+      </ul>
+
+      <h3>Results at Horizon H=3 (3-day forecast)</h3>
+
+      <p>Experiments conducted on three soil moisture monitoring stations (jr1, jr2, jr3) from the <strong>SoilSCAPE network</strong> in New Mexico. These sites provide in-situ reference measurements for validation.</p>
+
+      <p><strong>Evaluation Metrics:</strong></p>
+      <ul>
+        <li><strong>RMSE:</strong> Root mean squared error (m³/m³) — prediction accuracy.</li>
+        <li><strong>CRPS:</strong> Continuous ranked probability score — measures both sharpness and calibration of the predictive distribution.</li>
+        <li><strong>ECE:</strong> Expected calibration error — difference between predicted and observed coverage of prediction intervals. Lower = better calibrated.</li>
+      </ul>
+
+      <div class="table-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Method</th>
+              <th>Weight (w)</th>
+              <th>RMSE</th>
+              <th>CRPS</th>
+              <th>ECE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="font-weight: bold; background-color: #f0f0f0;">
+              <td colspan="6">JR1 Site</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>CYGNSS Retrieval</td>
+              <td>—</td>
+              <td>0.0280</td>
+              <td>0.0153</td>
+              <td>0.077</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>SMAP Forecast</td>
+              <td>—</td>
+              <td>0.0375</td>
+              <td>0.0193</td>
+              <td>0.057</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>W₂ (Equal)</td>
+              <td>0.5000</td>
+              <td>0.0290</td>
+              <td>0.0153</td>
+              <td>0.054</td>
+            </tr>
+            <tr style="font-weight: bold;">
+              <td></td>
+              <td>W₂ (qMSE)</td>
+              <td>0.6384</td>
+              <td>0.0278</td>
+              <td>0.0148</td>
+              <td>0.019</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #f0f0f0;">
+              <td colspan="6">JR2 Site</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>CYGNSS Retrieval</td>
+              <td>—</td>
+              <td>0.0193</td>
+              <td>0.0106</td>
+              <td>0.102</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>SMAP Forecast</td>
+              <td>—</td>
+              <td>0.0244</td>
+              <td>0.0117</td>
+              <td>0.127</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>W₂ (Equal)</td>
+              <td>0.5000</td>
+              <td>0.0184</td>
+              <td>0.0093</td>
+              <td>0.086</td>
+            </tr>
+            <tr style="font-weight: bold;">
+              <td></td>
+              <td>W₂ (qMSE)</td>
+              <td>0.6632</td>
+              <td>0.0178</td>
+              <td>0.0093</td>
+              <td>0.030</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #f0f0f0;">
+              <td colspan="6">JR3 Site</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>CYGNSS Retrieval</td>
+              <td>—</td>
+              <td>0.0243</td>
+              <td>0.0132</td>
+              <td>0.129</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>SMAP Forecast</td>
+              <td>—</td>
+              <td>0.0317</td>
+              <td>0.0161</td>
+              <td>0.097</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>W₂ (Equal)</td>
+              <td>0.5000</td>
+              <td>0.0247</td>
+              <td>0.0125</td>
+              <td>0.059</td>
+            </tr>
+            <tr style="font-weight: bold;">
+              <td></td>
+              <td>W₂ (qMSE)</td>
+              <td>0.5949</td>
+              <td>0.0240</td>
+              <td>0.0122</td>
+              <td>0.014</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="skills">
-        <h3>Skills</h3>
-        <div class="tags">
-          <span>Python</span>
-          <span>Machine Learning</span>
-          <span>Data Analysis</span>
-          <span>Statistics</span>
-          <span>Time Series Forecasting</span>
-          <span>Probabilistic Modeling</span>
-          <span>Remote Sensing</span>
-          <span>SQL</span>
-          <span>Computer Vision</span>
-        </div>
-      </div>
+      <p><strong>Key Findings:</strong></p>
+      <ul>
+        <li><strong>qMSE weighting wins on all three sites:</strong> Achieves lowest RMSE and CRPS across jr1, jr2, jr3, plus dramatically better calibration (ECE: 0.019, 0.030, 0.014 vs. naive equal weighting at 0.054, 0.086, 0.059).</li>
+        <li><strong>JR2 best case:</strong> qMSE fusion achieves 0.0178 RMSE (vs. 0.0244 forecast alone, 0.0193 retrieval alone) with ECE of only 0.030 — highly trustworthy uncertainty estimates.</li>
+        <li><strong>Complementarity confirmed:</strong> Neither source dominates; fusion systematically improves both accuracy and reliability by combining SMAP temporal structure with CYGNSS real-time observations.</li>
+      </ul>
 
-      <div class="languages">
-        <h3>Languages</h3>
-        <ul>
-          <li>Greek (Native)</li>
-          <li>English (C2)</li>
-          <li>German (B2)</li>
-        </ul>
-      </div>
-
-      <div class="interests">
-        <h3>Hobbies & Interests</h3>
-        <ul>
-          <li>🚣‍♂️ Competitive Kayaking</li>
-          <li>🏔️ Hiking & Nature</li>
-          <li>🏺 History</li>
-          <li>🌍 Geopolitics</li>
-        </ul>
-      </div>
-    </aside>
-
-    <main class="main-content">
-      <section class="details-block">
-        <a href="/projects/projects.html" class="back-arrow">← Back to Projects</a>
-
-        <h2>Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation</h2>
-
-        <img
-          src="../graphics/projects/igarss-2026/NASAs-Cyclone-Global-Navigation-Satellite-System-CYGNSS-mission-a-constellation-of.png"
-          alt="CYGNSS satellite constellation"
-          class="details-img"
-        />
-
-        <div class="tags">
-          <span>Python</span>
-          <span>Machine Learning</span>
-          <span>Remote Sensing</span>
-          <span>Uncertainty Quantification</span>
-          <span>GNSS-R</span>
-          <span>Optimal Transport</span>
-          <span>Model Fusion</span>
-        </div>
-
-        <p>
-          <strong>Brief:</strong> This project studies probabilistic fusion for daily soil-moisture estimation by combining
-          two complementary sources: a forecasting distribution derived from SMAP L4 time-series data and an independent
-          retrieval distribution inferred from CYGNSS GNSS-R delay–Doppler observations. Instead of fusing only point
-          predictions, the method combines full predictive distributions and explicitly evaluates both accuracy and calibration.
-        </p>
-
-        <p>
-          The core idea is to treat soil-moisture estimation as a <em>forecast–retrieval fusion</em> problem. The forecasting
-          leg propagates recent SMAP L4 information forward in time, while the retrieval leg provides an observational estimate
-          from CYGNSS when satellite measurements are available. These two predictive distributions are then fused with a
-          one-dimensional Wasserstein-2 barycenter, producing a final soil-moisture estimate together with an uncertainty envelope.
-        </p>
-
-        <h3>The Problem</h3>
-
-        <p>
-          Soil moisture is a fundamentally uncertain quantity when estimated from heterogeneous remote-sensing pipelines.
-          Forecasting models accumulate temporal prediction error, while retrieval models inherit uncertainty from the sensing
-          process, observation noise, and incomplete observability of land-surface conditions. For applications such as drought
-          monitoring, irrigation planning, and hydrologic forecasting, point predictions alone are not enough; the system must
-          also quantify how reliable each estimate is.
-        </p>
-
-        <p>
-          This project focuses on that uncertainty-aware setting. Rather than asking which single source is best, the question
-          becomes: <em>how should we combine two probabilistic estimators so that the fused product is accurate, calibrated,
-          and operationally meaningful?</em>
-        </p>
-
-        <h3>Methodology Overview</h3>
-
-        <p>
-          The pipeline consists of two probabilistic predictors followed by a fusion stage. The target variable is collocated
-          SMAP L4 surface soil moisture, evaluated chronologically with train/validation/test splits at multiple forecast
-          horizons. Each leg outputs a Gaussian predictive distribution, and fusion is performed at the distribution level
-          rather than at the level of scalar means.
-        </p>
-
+      <div class="figure-grid">
         <div class="figure">
-          <img src="../graphics/projects/igarss-2026/pipeline.png" alt="Pipeline schematic" />
-          <p class="caption">End-to-end pipeline: CYGNSS retrieval leg, SMAP L4 forecasting leg, and probabilistic fusion.</p>
+          <img src="../graphics/projects/igarss-2026/jr2_pareto_forecast_pct_with_L2.jpg" alt="JR2 Pareto forecast performance"/>
+          <p class="caption">JR2 horizon-wise fusion gains relative to the forecast baseline in the RMSE–CRPS plane.</p>
         </div>
-
-        <h3>Forecasting Leg: SMAP L4 Time-Series Model</h3>
-
-        <p>
-          The forecasting branch uses a state-space <strong>ARIMAX</strong> model with exogenous inputs to generate
-          horizon-dependent predictive distributions from the SMAP L4 soil-moisture time series. At each forecast origin,
-          the model produces an <em>H</em>-step-ahead Gaussian forecast, and the filtered state is updated sequentially
-          as new observations arrive while keeping the model parameters fixed.
-        </p>
-
-        <p>
-          This branch captures temporal structure and smooth evolution in soil moisture, making it useful when the recent
-          system state is informative. Its strength is continuity and temporal consistency; its limitation is that forecast
-          uncertainty grows with lead time and accumulated model error.
-        </p>
-
-        <h3>Retrieval Leg: CYGNSS-Based Probabilistic Regression</h3>
-
-        <p>
-          The retrieval branch estimates soil moisture directly from <strong>CYGNSS delay–Doppler map (DDM)</strong>
-          observations and auxiliary variables. Features are constructed from flattened DDM information together with seasonal
-          terms and other collocated predictors, and the probabilistic regressor is trained to output a Normal distribution
-          parameterized by a mean and standard deviation.
-        </p>
-
-        <p>
-          The model used here is <strong>NGBoost</strong> (Natural Gradient Boosting) with a Gaussian output distribution,
-          trained by minimizing negative log-likelihood. This gives a retrieval estimate of the form
-          <em>N(μ<sub>r,t</sub>, σ²<sub>r,t</sub>)</em>, allowing the model to express both a point estimate and its
-          associated uncertainty.
-        </p>
-
-        <p>
-          Before modeling, CYGNSS observations are filtered through standard preprocessing steps, including conversion from
-          BRCS to reflectivity, removal of low-quality DDMs, exclusion of measurements with low SNR, and filtering out
-          acquisitions affected by precipitation. This keeps the retrieval branch closer to an analysis-ready operational product.
-        </p>
-
-        <h3>Fusion Rule: W₂ Barycenter in Quantile Space</h3>
-
-        <p>
-          The most important methodological contribution is the fusion stage. Instead of averaging only means, the method fuses
-          the two predictive distributions using a <strong>one-dimensional Wasserstein-2 (W₂) barycenter</strong>. In one
-          dimension, this corresponds to weighted averaging of quantile functions.
-        </p>
-
-        <p>
-          This has two advantages. First, it preserves the distributional structure of each leg more faithfully than a naive
-          pointwise average. Second, it gives direct access to fused prediction intervals, medians, and uncertainty summaries.
-          For Gaussian predictive legs, the fused mean is a weighted average of component means and the fused standard deviation
-          is a weighted average of component standard deviations, giving a clean closed-form implementation.
-        </p>
-
-        <p>
-          As a baseline, I also compare against an <strong>L₂ linear opinion pool</strong>, which mixes the component CDFs
-          directly. This makes it possible to test whether quantile-space optimal-transport fusion provides a practical benefit
-          over simpler probabilistic pooling.
-        </p>
-
-        <h3>Weight Selection Strategy</h3>
-
-        <p>
-          A major part of the study is not just the fusion rule itself, but <em>how to choose the fusion weight</em>.
-          For each site and forecast horizon, a single scalar weight is fitted on the validation split and then fixed for
-          test evaluation.
-        </p>
-
-        <p>
-          I compare several strategies:
-        </p>
-
-        <ul>
-          <li><strong>Equal weighting</strong>, as a simple non-adaptive baseline.</li>
-          <li><strong>RMSE-tuned weighting</strong>, which favors point accuracy of the fused mean.</li>
-          <li><strong>CRPS-tuned weighting</strong>, which optimizes the full predictive distribution.</li>
-          <li><strong>qMSE weighting</strong>, which minimizes squared error in quantile space and explicitly balances mean accuracy and dispersion.</li>
-          <li><strong>L₂-CRPS weighting</strong>, used for the linear-pooling baseline.</li>
-        </ul>
-
-        <p>
-          In practice, the qMSE rule is especially interesting because it does not optimize only a point metric; it encourages
-          a better trade-off between sharpness, calibration, and central accuracy. That makes it better aligned with the goals
-          of uncertainty-aware environmental prediction.
-        </p>
-
-        <h3>Experimental Setup</h3>
-
-        <p>
-          Experiments are carried out on <strong>SoilSCAPE</strong> sites jr1, jr2, and jr3, which provide long enough records
-          to support stable time-series forecasting and repeated horizon-wise evaluation. The target variable is collocated
-          SMAP L4 surface soil moisture, while CYGNSS DDM observations and auxiliary variables form the retrieval inputs.
-        </p>
-
-        <p>
-          Evaluation is performed for forecast horizons <strong>H = 2, 3, 4, 5</strong> using a chronological
-          train/validation/test split. Fusion weights are selected on validation only, then the component models are refit on
-          train + validation and evaluated on a held-out test set with the validation-selected weight fixed.
-        </p>
-
-        <p>
-          The main metrics are:
-        </p>
-
-        <ul>
-          <li><strong>RMSE</strong> for point accuracy of the fused median prediction.</li>
-          <li><strong>CRPS</strong> for probabilistic skill of the predictive distribution.</li>
-          <li><strong>ECE</strong> for calibration, computed from the mismatch between nominal and empirical coverage of prediction intervals.</li>
-        </ul>
-
-        <h3>Results and Findings</h3>
-
-        <p>
-          The main empirical takeaway is that probabilistic fusion improves reliability and often improves accuracy as well.
-          At horizon <strong>H = 3</strong>, the W₂ fusion with <strong>qMSE-based weighting</strong> consistently achieves
-          the best calibration across all three sites and is competitive or best on RMSE and CRPS depending on the site.
-          On jr2 in particular, fusion improves both RMSE and CRPS relative to either standalone predictor, showing that the
-          forecast and retrieval legs provide genuinely complementary information.
-        </p>
-
-        <p>
-          More broadly, the experiments show that <strong>weight choice matters as much as the fusion rule</strong>.
-          RMSE-tuned and CRPS-tuned weights do not necessarily produce the most reliable intervals, while qMSE tends to deliver
-          the most stable trade-off between point accuracy and uncertainty calibration. This is an important result because it
-          highlights that good uncertainty-aware fusion is not just about combining sources, but about selecting the objective
-          that defines what “good” means.
-        </p>
-
-        <div class="figure-grid">
-          <div class="figure">
-            <img src="../graphics/projects/igarss-2026/jr2_pareto_forecast_pct_with_L2.jpg" alt="JR2 Pareto forecast performance" />
-            <p class="caption">JR2 horizon-wise fusion gains relative to the forecast baseline in the RMSE–CRPS plane.</p>
-          </div>
-          <div class="figure">
-            <img src="../graphics/projects/igarss-2026/jr2_pareto_retrieval_pct_with_L2.jpg" alt="JR2 Pareto retrieval performance" />
-            <p class="caption">JR2 horizon-wise fusion gains relative to the retrieval baseline in the RMSE–CRPS plane.</p>
-          </div>
+        <div class="figure">
+          <img src="../graphics/projects/igarss-2026/jr2_pareto_retrieval_pct_with_L2.jpg" alt="JR2 Pareto retrieval performance"/>
+          <p class="caption">JR2 horizon-wise fusion gains relative to the retrieval baseline in the RMSE–CRPS plane.</p>
         </div>
+      </div>
 
-        <p>
-          The Pareto-style analysis on jr2 is particularly useful because it makes the trade-off visible: relative to the
-          forecasting baseline, fusion points lie in the improving region across horizons, while relative to retrieval,
-          CRPS gains remain more consistent than RMSE gains. This means fusion reliably improves probabilistic skill, but the
-          exact point-accuracy benefit depends on horizon and weight-selection strategy.
-        </p>
+      <h3>Implementation</h3>
+      <p><strong>Code:</strong> <a href="https://github.com/lpoly/IGARSS-2026" target="_blank" rel="noopener">github.com/lpoly/IGARSS-2026</a></p>
+      <ul>
+        <li><strong>Python</strong> — full experimental pipeline</li>
+        <li><strong>NGBoost</strong> — probabilistic CYGNSS retrieval</li>
+        <li><strong>ARIMAX / SARIMAX</strong> — SMAP L4 forecasting</li>
+        <li><strong>NumPy / Pandas / SciPy</strong> — feature handling, distribution computations, evaluation</li>
+        <li><strong>Matplotlib</strong> — quantitative analysis and figures</li>
+      </ul>
 
-
-        <h3>Technical Contribution</h3>
-
-        <p>
-          From a machine-learning perspective, the contribution of this project is not a single new model but a
-          <strong>well-structured probabilistic decision pipeline</strong>:
-        </p>
-
-        <ul>
-          <li>a time-series forecasting model for temporally coherent predictive distributions,</li>
-          <li>a probabilistic retrieval model for observation-driven estimates from GNSS-R measurements,</li>
-          <li>an optimal-transport-based fusion mechanism for combining the two distributions, and</li>
-          <li>a validation framework that evaluates both accuracy and calibration rather than only RMSE.</li>
-        </ul>
-
-        <p>
-          This makes the system practical for real uncertainty-aware monitoring scenarios, where different sources carry
-          different failure modes and confidence levels.
-        </p>
-
-        <h3>Implementation</h3>
-
-        <p><strong>Code:</strong> <a href="https://github.com/lpoly/IGARSS-2026" target="_blank" rel="noopener noreferrer">github.com/lpoly/IGARSS-2026</a></p>
-
-        <ul>
-          <li><strong>Python</strong> for the full experimental pipeline</li>
-          <li><strong>NGBoost</strong> for probabilistic CYGNSS retrieval</li>
-          <li><strong>State-space ARIMAX / SARIMAX tooling</strong> for SMAP L4 forecasting</li>
-          <li><strong>NumPy / Pandas / SciPy</strong> for feature handling, distribution computations, and evaluation</li>
-          <li><strong>Matplotlib</strong> for quantitative analysis and figures</li>
-        </ul>
-
-        <h3>Why This Matters</h3>
-
-        <p>
-          In environmental monitoring, better uncertainty estimates can be as important as better mean predictions. A fused
-          product that is slightly more conservative but much better calibrated may be more useful in practice than a sharp
-          but overconfident predictor. This project is a good example of that principle: the methodology is designed not only
-          to improve soil-moisture estimates, but to make those estimates more trustworthy.
-        </p>
-
-        <p>
-          More generally, the project sits at the intersection of remote sensing, probabilistic machine learning, and optimal
-          transport. It shows how ideas from uncertainty quantification and distributional fusion can be turned into a concrete,
-          testable pipeline for geoscience applications.
-        </p>
-
-        <h3>Publication Details</h3>
-
-        <p><strong>Conference:</strong> IEEE International Geoscience and Remote Sensing Symposium (IGARSS) 2026</p>
-        <p><strong>Status:</strong> Accepted</p>
-        <p><strong>Paper:</strong> “Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation”</p>
-      </section>
-    </main>
-  </div>
-
-  <footer class="footer">
-    <p>Last updated: March 22, 2026</p>
-  </footer>
+      <h3>Publication Details</h3>
+      <p><strong>Conference:</strong> IEEE International Geoscience and Remote Sensing Symposium (IGARSS) 2026</p>
+      <p><strong>Status:</strong> Accepted</p>
+      <p><strong>Paper:</strong> "Multi-Source Uncertainty Aware Fusion for Soil Moisture Estimation"</p>
+    </div>
+  </main>
+</div>
+<footer>Last updated: March 25, 2026</footer>
 </body>
 </html>

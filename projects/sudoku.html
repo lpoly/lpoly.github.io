@@ -1,79 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - AR Sudoku Solver</title>
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AR Sudoku Solver – Lefteris Polychronakis</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <a href="../index.html"><img src="../profile.jpg" alt="Your Photo" class="profile-img" /></a>
-      <h1>Lefteris Polychronakis</h1>
-      <p class="role">MSc ML/AI graduate | Data Science / Machine Learning / Data Analyst</p>
-      <p class="location">Based in Heraklion, Greece</p>
-
+<div class="container">
+  <aside class="sidebar">
+    <div class="profile-block">
+      <a href="../index.html"><img src="../profile.jpg" alt="Lefteris Polychronakis" class="profile-img"/></a>
+      <h1 class="profile-name">Lefteris<br>Polychronakis</h1>
+      <p class="profile-role">MSc ML / AI · Data Science<br>Machine Learning · Analytics</p>
+      <p class="profile-location">📍 Heraklion, Greece</p>
       <div class="socials">
-        <a href="https://www.linkedin.com/in/lefterispolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/linkedin.png" alt="LinkedIn" /></a>
-        <a href="https://github.com/lpoly"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/github.png" alt="GitHub" /></a>
-        <a href="https://www.youtube.com/@LefterisPolychronakis"target="_blank" rel="noopener noreferrer"><img src="../graphics/general/youtube.png" alt="YouTube" /></a>
+        <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/lpoly" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis" target="_blank" rel="noopener" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
       </div>
+    </div>
+    <div class="sb-section"><span class="sb-label">About</span><p class="sb-text">MSc in Computer Science &amp; Engineering with a Mathematics BSc. Hands-on experience in Python, ML, time-series forecasting, and remote sensing.</p></div>
+    <div class="sb-section"><span class="sb-label">Skills</span><div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Analysis</span><span class="tag">Statistics</span><span class="tag">Time Series</span><span class="tag">Probabilistic Modeling</span><span class="tag">Remote Sensing</span><span class="tag">SQL</span><span class="tag">Computer Vision</span></div></div>
+    <div class="sb-section"><span class="sb-label">Languages</span><ul class="sb-list"><li>Greek <span class="meta">Native</span></li><li>English <span class="meta">C2</span></li><li>German <span class="meta">B2</span></li></ul></div>
+    <div class="sb-section"><span class="sb-label">Interests</span><ul class="sb-list"><li>🚣‍♂️ Competitive Kayaking</li><li>🏔️ Hiking &amp; Nature</li><li>🏺 History</li><li>🌍 Geopolitics</li></ul></div>
+  </aside>
 
-      <div class="about">
-        <h3>About</h3>
-        <p>MSc in Computer Science and Engineering with a Mathematics BSc and hands-on experience in Python, machine learning, time-series forecasting, and remote sensing. Currently seeking industry roles in Data Science, Machine Learning, or Data Analytics where I can contribute to real-world applications.</p>
-      </div>
-
-      <div class="skills">
-        <h3>Skills</h3>
-        <div class="tags">
-          <span>Python</span>
-          <span>Machine Learning</span>
-          <span>Data Analysis</span>
-          <span>Statistics</span>
-          <span>Time Series Forecasting</span>
-          <span>Probabilistic Modeling</span>
-          <span>Remote Sensing</span>
-          <span>SQL</span>
-          <span>Computer Vision</span>
-        </div>
-      </div>
-
-      <div class="languages">
-        <h3>Languages</h3>
-        <ul>
-          <li>Greek (Native)</li>
-          <li>English (C2)</li>
-          <li>German (B2)</li>
-        </ul>
-      </div>
-
-      <div class="interests">
-        <h3>Hobbies & Interests</h3>
-        <ul>
-          <li>🚣‍♂️ Competitive Kayaking</li>
-          <li>🏔️ Hiking & Nature</li>
-          <li>🏺 History</li>
-          <li>🌍 Geopolitics</li>
-        </ul>
-      </div>
-    </aside>
-    <main class="main-content">
-      <section class="details-block">
+  <main class="main-content">
+    <div class="details-block">
         <a href="../index.html" class="back-arrow">← Back to Projects</a>
         <h2>Augmented Reality Sudoku Solver</h2>
         <img src="../graphics/projects/project-images/sudoku.png" alt="Sudoku Project Image" class="details-img" />
 
         <div class="tags">
-          <span>Python</span>
-          <span>Computer Vision</span>
-          <span>Machine Learning</span>
-          <span>TensorFlow</span>
+          <span class="tag">Python</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">TensorFlow</span>
         </div>
 
-        <p><strong>Brief:</strong> Built an augmented reality Sudoku solver using a Convolutional Neural Network (CNN) and computer vision techniques. The app captures a Sudoku grid using a camera, recognizes digits, solves the puzzle, and overlays the solution in real time.</p>
+        <h3>Brief</h3>
+        <p>Built an augmented reality Sudoku solver using a Convolutional Neural Network (CNN) and computer vision techniques. The app captures a Sudoku grid using a camera, recognizes digits, solves the puzzle, and overlays the solution in real time.</p>
 
         <h3>Details</h3>
         <p>This project applies a mix of computer vision, CNN-based digit recognition, and constraint-solving techniques. A CNN model trained on the Chars74K dataset is used to classify digits within the Sudoku grid.</p>
@@ -110,12 +79,9 @@
             allowfullscreen>
           </iframe>
         </div>
-      </section>
-    </main>
-  </div>
-
-  <footer class="footer">
-    <p>Last updated: March 22, 2026</p>
-  </footer>
+      </div>
+  </main>
+</div>
+<footer>Last updated: March 25, 2026</footer>
 </body>
 </html>
