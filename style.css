@@ -414,6 +414,32 @@ body::before {
   margin: 18px 0 10px;
 }
 
+.project-link-row {
+  margin: 6px 0 14px;
+}
+
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--border-warm);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  text-decoration: none;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.project-link-btn:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
 .details-block p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.78; margin-bottom: 12px; }
 .details-block p strong { color: var(--text); font-weight: 600; }
 .details-block p em { font-style: italic; }
