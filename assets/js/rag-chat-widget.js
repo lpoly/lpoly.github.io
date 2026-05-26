@@ -1,6 +1,6 @@
 (function () {
   const SPACE_BASE = "https://lpoly-cv-rag.hf.space";
-  const API_PREFIX_CANDIDATES = ["/gradio_api/call", "/call"];
+  const API_PREFIX = "/gradio_api/call";
   const CHAT_ENDPOINT = "chat";
   const CLEAR_ENDPOINT = "clear_chat";
 
@@ -9,8 +9,7 @@
   let isOpen = false;
   let isBusy = false;
   let connected = false;
-  let chatHistory = [];
-  let memoryState = [];
+  let fullMessages = [];   // Gradio 6.x messages format from output[0]
 
   const host = document.createElement("div");
   host.className = "lp-chat-widget";
@@ -62,26 +61,34 @@
       .replaceAll(">", "&gt;");
   }
 
-  function renderHistory() {
-    if (!chatHistory.length) {
+  // Gradio 6.x returns messages as [{role, content: [{text, type}]}]
+  function extractText(msg) {
+    if (!msg || !msg.content) return "";
+    for (const part of msg.content) {
+      if (part.type === "text" && part.text) return part.text;
+      // older Gradio format fallback: content is a plain string
+      if (typeof part === "string") return part;
+    }
+    return "";
+  }
+
+  function renderMessages(messages) {
+    if (!messages || !messages.length) {
       messagesEl.innerHTML =
         '<div class="lp-chat-bubble bot">Hi, I can answer questions about Lefteris from his CV, website, and FAQ.</div>';
       return;
     }
 
     const html = [];
-    for (const pair of chatHistory) {
-      const user = Array.isArray(pair) ? String(pair[0] ?? "") : "";
-      const bot = Array.isArray(pair) ? String(pair[1] ?? "") : "";
-      if (user) {
-        html.push('<div class="lp-chat-bubble user">' + escapeHtml(user) + "</div>");
-      }
-      if (bot) {
-        html.push('<div class="lp-chat-bubble bot">' + escapeHtml(bot) + "</div>");
-      }
+    for (const msg of messages) {
+      const text = extractText(msg);
+      if (!text) continue;
+      const cls = msg.role === "user" ? "user" : "bot";
+      html.push('<div class="lp-chat-bubble ' + cls + '">' + escapeHtml(text) + "</div>");
     }
 
-    messagesEl.innerHTML = html.join("");
+    messagesEl.innerHTML = html.join("") ||
+      '<div class="lp-chat-bubble bot">Hi, I can answer questions about Lefteris from his CV, website, and FAQ.</div>';
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
@@ -114,13 +121,11 @@
   async function streamResult(getUrl) {
     const response = await fetch(getUrl, {
       method: "GET",
-      headers: {
-        Accept: "text/event-stream",
-      },
+      headers: { Accept: "text/event-stream" },
     });
 
     if (!response.ok) {
-      throw new Error("Backend stream failed (" + response.status + ")");
+      throw new Error("Stream request failed (" + response.status + ")");
     }
 
     const raw = await response.text();
@@ -129,55 +134,41 @@
     for (let i = events.length - 1; i >= 0; i -= 1) {
       const evt = events[i];
       if (evt.event === "error") {
-        let errorMessage = "Remote assistant returned an error.";
+        let msg = "Remote assistant returned an error.";
         try {
           const parsed = JSON.parse(evt.data);
-          if (typeof parsed === "string") errorMessage = parsed;
-        } catch (_ignored) {
-          errorMessage = evt.data || errorMessage;
-        }
-        throw new Error(errorMessage);
+          if (typeof parsed === "string") msg = parsed;
+        } catch (_) {}
+        throw new Error(msg);
       }
       if (evt.event === "complete") {
         return JSON.parse(evt.data);
       }
     }
 
-    throw new Error("Remote assistant did not return a completed response.");
+    throw new Error("No completed response from assistant.");
   }
 
   async function postCall(endpoint, payload) {
-    let lastError = null;
+    const postUrl = SPACE_BASE + API_PREFIX + "/" + endpoint;
+    const response = await fetch(postUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-    for (const prefix of API_PREFIX_CANDIDATES) {
-      const postUrl = SPACE_BASE + prefix + "/" + endpoint;
-      try {
-        const response = await fetch(postUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (!response.ok) {
-          throw new Error("HTTP " + response.status + " while calling " + endpoint);
-        }
-
-        const body = await response.json();
-        if (!body || !body.event_id) {
-          throw new Error("Missing event_id in backend response.");
-        }
-
-        const result = await streamResult(postUrl + "/" + body.event_id);
-        connected = true;
-        return result;
-      } catch (error) {
-        lastError = error;
-      }
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status + " calling " + endpoint);
     }
 
-    throw lastError || new Error("Failed to call backend");
+    const body = await response.json();
+    if (!body || !body.event_id) {
+      throw new Error("Missing event_id in response.");
+    }
+
+    const result = await streamResult(postUrl + "/" + body.event_id);
+    connected = true;
+    return result;
   }
 
   async function sendMessage() {
@@ -188,8 +179,9 @@
 
     setBusy(true);
     setStatus(connected ? "Thinking..." : "Connecting to assistant...");
-
     inputEl.value = "";
+
+    // Optimistically show user bubble + loading indicator
     messagesEl.insertAdjacentHTML(
       "beforeend",
       '<div class="lp-chat-bubble user">' + escapeHtml(userMessage) + "</div>" +
@@ -198,18 +190,16 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
     try {
+      // Gradio 6.x: State is managed server-side via session_hash — only send message
       const output = await postCall(CHAT_ENDPOINT, {
-        data: [userMessage, chatHistory, memoryState],
+        data: [userMessage],
         session_hash: sessionHash,
       });
 
-      const nextChat = output && output[1] ? output[1] : output && output[0] ? output[0] : [];
-      const nextMemory = output && output[2] ? output[2] : memoryState;
-
-      chatHistory = Array.isArray(nextChat) ? nextChat : [];
-      memoryState = Array.isArray(nextMemory) ? nextMemory : [];
-
-      renderHistory();
+      // output[0] = full Gradio chatbot messages list
+      const messages = Array.isArray(output) && Array.isArray(output[0]) ? output[0] : [];
+      fullMessages = messages;
+      renderMessages(fullMessages);
       setStatus("Online");
     } catch (error) {
       const loading = messagesEl.querySelector("#lp-chat-loading");
@@ -234,12 +224,11 @@
         session_hash: sessionHash,
       });
     } catch (error) {
-      console.error("Clear chat endpoint warning:", error);
+      console.error("Clear chat warning:", error);
     }
 
-    chatHistory = [];
-    memoryState = [];
-    renderHistory();
+    fullMessages = [];
+    renderMessages([]);
     setStatus(connected ? "Online" : "Offline until first message (lazy connect).");
     setBusy(false);
   }
@@ -249,25 +238,14 @@
     host.classList.toggle("open", isOpen);
     if (isOpen) {
       inputEl.focus();
-      renderHistory();
+      renderMessages(fullMessages);
     }
   }
 
-  openBtn.addEventListener("click", function () {
-    toggleOpen();
-  });
-
-  closeBtn.addEventListener("click", function () {
-    toggleOpen(false);
-  });
-
-  clearBtn.addEventListener("click", function () {
-    clearChat();
-  });
-
-  sendBtn.addEventListener("click", function () {
-    sendMessage();
-  });
+  openBtn.addEventListener("click", function () { toggleOpen(); });
+  closeBtn.addEventListener("click", function () { toggleOpen(false); });
+  clearBtn.addEventListener("click", function () { clearChat(); });
+  sendBtn.addEventListener("click", function () { sendMessage(); });
 
   inputEl.addEventListener("keydown", function (event) {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -276,5 +254,5 @@
     }
   });
 
-  renderHistory();
+  renderMessages(fullMessages);
 })();
