@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320" style="font-family:'Source Sans 3',system-ui,sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2563c8"/>
+    </marker>
+    <marker id="arr-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6b7a99"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="320" rx="14" fill="#f7f8fc" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+
+  <!-- ── INDEXING LANE label ── -->
+  <text x="18" y="74" font-size="9" font-weight="600" letter-spacing="0.12em" fill="#6b7a99" text-transform="uppercase" font-family="'JetBrains Mono',monospace" text-anchor="start">INDEXING</text>
+
+  <!-- ── QUERY LANE label ── -->
+  <text x="18" y="214" font-size="9" font-weight="600" letter-spacing="0.12em" fill="#6b7a99" text-transform="uppercase" font-family="'JetBrains Mono',monospace" text-anchor="start">QUERY</text>
+
+  <!-- Divider line -->
+  <line x1="18" y1="158" x2="882" y2="158" stroke="rgba(0,0,0,0.07)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ═══════════════════════════════════════════
+       INDEXING ROW (y-center = 100)
+       nodes: CV PDF (x=90), Website (x=210), arrow merge→ Ingest (x=350), → Embed (x=510), → FAISS (x=680)
+       ═══════════════════════════════════════════ -->
+
+  <!-- CV PDF node -->
+  <rect x="30" y="78" width="100" height="44" rx="8" fill="#ffffff" stroke="rgba(37,99,200,0.3)" stroke-width="1.5"/>
+  <text x="80" y="97" font-size="11" font-weight="600" fill="#1a2133" text-anchor="middle">CV PDF</text>
+  <text x="80" y="112" font-size="9.5" fill="#6b7a99" text-anchor="middle">lpolychronakis.pdf</text>
+
+  <!-- Website node -->
+  <rect x="148" y="78" width="100" height="44" rx="8" fill="#ffffff" stroke="rgba(37,99,200,0.3)" stroke-width="1.5"/>
+  <text x="198" y="97" font-size="11" font-weight="600" fill="#1a2133" text-anchor="middle">Portfolio Site</text>
+  <text x="198" y="112" font-size="9.5" fill="#6b7a99" text-anchor="middle">lpoly.github.io</text>
+
+  <!-- FAQ node -->
+  <rect x="266" y="78" width="80" height="44" rx="8" fill="#ffffff" stroke="rgba(37,99,200,0.3)" stroke-width="1.5"/>
+  <text x="306" y="97" font-size="11" font-weight="600" fill="#1a2133" text-anchor="middle">FAQ</text>
+  <text x="306" y="112" font-size="9.5" fill="#6b7a99" text-anchor="middle">FAQ.txt</text>
+
+  <!-- Arrow: sources → Ingest -->
+  <line x1="362" y1="100" x2="388" y2="100" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Bracket: merge sources -->
+  <polyline points="130,100 362,100" stroke="#2563c8" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  <polyline points="248,100 362,100" stroke="#2563c8" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  <polyline points="346,100 362,100" stroke="#2563c8" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+
+  <!-- Ingest & Chunk node -->
+  <rect x="390" y="78" width="118" height="44" rx="8" fill="rgba(37,99,200,0.07)" stroke="#2563c8" stroke-width="1.5"/>
+  <text x="449" y="97" font-size="11" font-weight="600" fill="#2563c8" text-anchor="middle">Ingest &amp; Chunk</text>
+  <text x="449" y="112" font-size="9.5" fill="#4a5874" text-anchor="middle">ingest.py · 108 chunks</text>
+
+  <!-- Arrow: Ingest → Embed -->
+  <line x1="508" y1="100" x2="534" y2="100" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Embed node -->
+  <rect x="536" y="78" width="134" height="44" rx="8" fill="rgba(37,99,200,0.07)" stroke="#2563c8" stroke-width="1.5"/>
+  <text x="603" y="97" font-size="11" font-weight="600" fill="#2563c8" text-anchor="middle">Embed</text>
+  <text x="603" y="112" font-size="9.5" fill="#4a5874" text-anchor="middle">BAAI/bge-m3</text>
+
+  <!-- Arrow: Embed → FAISS -->
+  <line x1="670" y1="100" x2="698" y2="100" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- FAISS node -->
+  <rect x="700" y="78" width="108" height="44" rx="8" fill="rgba(37,99,200,0.12)" stroke="#2563c8" stroke-width="2"/>
+  <text x="754" y="97" font-size="11" font-weight="600" fill="#1842a0" text-anchor="middle">FAISS Index</text>
+  <text x="754" y="112" font-size="9.5" fill="#4a5874" text-anchor="middle">vector_store/</text>
+
+  <!-- ═══════════════════════════════════════════
+       QUERY ROW (y-center = 240)
+       User Query (x=80) → Embed (x=240) → Retrieve (x=420) ← FAISS connector
+       Retrieve → LLM (x=580) → Answer (x=760)
+       ═══════════════════════════════════════════ -->
+
+  <!-- User Query node -->
+  <rect x="30" y="218" width="100" height="44" rx="8" fill="#ffffff" stroke="rgba(37,99,200,0.3)" stroke-width="1.5"/>
+  <text x="80" y="237" font-size="11" font-weight="600" fill="#1a2133" text-anchor="middle">User Query</text>
+  <text x="80" y="252" font-size="9.5" fill="#6b7a99" text-anchor="middle">natural language</text>
+
+  <!-- Arrow: Query → Embed -->
+  <line x1="130" y1="240" x2="158" y2="240" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Embed (query side) node -->
+  <rect x="160" y="218" width="134" height="44" rx="8" fill="rgba(37,99,200,0.07)" stroke="#2563c8" stroke-width="1.5"/>
+  <text x="227" y="237" font-size="11" font-weight="600" fill="#2563c8" text-anchor="middle">Embed</text>
+  <text x="227" y="252" font-size="9.5" fill="#4a5874" text-anchor="middle">BAAI/bge-m3</text>
+
+  <!-- Arrow: Embed → Retrieve -->
+  <line x1="294" y1="240" x2="322" y2="240" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Retrieve node -->
+  <rect x="324" y="218" width="130" height="44" rx="8" fill="rgba(37,99,200,0.07)" stroke="#2563c8" stroke-width="1.5"/>
+  <text x="389" y="237" font-size="11" font-weight="600" fill="#2563c8" text-anchor="middle">Retrieve Top-K</text>
+  <text x="389" y="252" font-size="9.5" fill="#4a5874" text-anchor="middle">cosine sim · re-rank</text>
+
+  <!-- Connector: FAISS → Retrieve (vertical down from FAISS) -->
+  <polyline points="754,122 754,168 389,168 389,218" stroke="#2563c8" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Arrow: Retrieve → LLM -->
+  <line x1="454" y1="240" x2="482" y2="240" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- LLM node -->
+  <rect x="484" y="218" width="156" height="44" rx="8" fill="rgba(37,99,200,0.07)" stroke="#2563c8" stroke-width="1.5"/>
+  <text x="562" y="237" font-size="11" font-weight="600" fill="#2563c8" text-anchor="middle">LLM Generation</text>
+  <text x="562" y="252" font-size="9.5" fill="#4a5874" text-anchor="middle">Groq · Llama 3.3 70B</text>
+
+  <!-- Arrow: LLM → Answer -->
+  <line x1="640" y1="240" x2="668" y2="240" stroke="#2563c8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Answer node -->
+  <rect x="670" y="218" width="112" height="44" rx="8" fill="rgba(37,99,200,0.12)" stroke="#2563c8" stroke-width="2"/>
+  <text x="726" y="237" font-size="11" font-weight="600" fill="#1842a0" text-anchor="middle">Answer</text>
+  <text x="726" y="252" font-size="9.5" fill="#4a5874" text-anchor="middle">Gradio · REST API</text>
+
+  <!-- Legend: Gradio widget icon hint -->
+  <text x="450" y="305" font-size="9" fill="#9aa3b8" text-anchor="middle" font-family="'JetBrains Mono',monospace">Embeddings shared between indexing &amp; query — same model ensures consistent vector space</text>
+</svg>

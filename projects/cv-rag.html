@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Chatbot – Lefteris Polychronakis</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div class="profile-block">
+      <a href="../index.html"><img src="../profile.jpg" alt="Lefteris Polychronakis" class="profile-img"/></a>
+      <h1 class="profile-name">Lefteris<br>Polychronakis</h1>
+      <p class="profile-role">MSc ML / AI · Data Science<br>Machine Learning · Analytics</p>
+      <p class="profile-location">📍 Heraklion, Greece</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/lefterispolychronakis" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/lpoly" target="_blank" rel="noopener" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.youtube.com/@LefterisPolychronakis" target="_blank" rel="noopener" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="sb-section"><span class="sb-label">About</span><p class="sb-text">MSc in Computer Science &amp; Engineering with a Mathematics BSc. Hands-on experience in Python, ML, time-series forecasting, and remote sensing.</p></div>
+    <div class="sb-section"><span class="sb-label">Skills</span><div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Analysis</span><span class="tag">Statistics</span><span class="tag">Time Series</span><span class="tag">Probabilistic Modeling</span><span class="tag">Remote Sensing</span><span class="tag">SQL</span><span class="tag">Computer Vision</span></div></div>
+    <div class="sb-section"><span class="sb-label">Languages</span><ul class="sb-list"><li>Greek <span class="meta">Native</span></li><li>English <span class="meta">C2</span></li><li>German <span class="meta">B2</span></li></ul></div>
+    <div class="sb-section"><span class="sb-label">Interests</span><ul class="sb-list"><li>🚣‍♂️ Competitive Kayaking</li><li>🏔️ Hiking &amp; Nature</li><li>🏺 History</li><li>🌍 Geopolitics</li></ul></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="details-block">
+      <a href="./projects.html" class="back-arrow">← Back to Projects</a>
+      <h2>Portfolio Chatbot — RAG Assistant</h2>
+
+      <img src="../graphics/projects/project-images/cv-rag-thumb.jpg" alt="Portfolio RAG Chatbot" class="details-img"/>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">RAG</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">FAISS</span>
+        <span class="tag">Embeddings</span>
+        <span class="tag">Groq</span>
+        <span class="tag">Gradio</span>
+        <span class="tag">NLP</span>
+      </div>
+
+      <div class="project-link-row">
+        <a href="https://huggingface.co/spaces/lpoly/CV_RAG" target="_blank" rel="noopener" class="project-link-btn" aria-label="Open live Portfolio Chatbot on Hugging Face">
+          <img src="../graphics/general/Hf-logo-with-title.svg" alt="Hugging Face" class="project-link-icon"/>
+          <span>Open Live Demo</span>
+        </a>
+      </div>
+
+      <h3>Brief</h3>
+      <p>A live, deployed AI assistant that answers questions about my background, projects, skills, and CV. It uses <strong>retrieval-augmented generation (RAG)</strong>: rather than relying on a model's training memory, it retrieves the most relevant passages from my actual documents and feeds them to the LLM as context. Ask it anything — it answers from source, not from guesswork.</p>
+
+      <h3>What It Does</h3>
+      <p>The chatbot is embedded directly on this portfolio and deployed as a public Hugging Face Space. Visitors can ask questions like <em>"What is his latest job?"</em>, <em>"What ML frameworks does he know?"</em>, or <em>"Tell me about the IGARSS paper"</em> — and get accurate, grounded answers drawn from my CV and website content.</p>
+      <ul>
+        <li>Answers questions about experience, projects, skills, and education</li>
+        <li>Grounds every answer in retrieved source documents — no hallucination</li>
+        <li>Maintains short-term conversation memory across follow-up questions</li>
+        <li>Falls back gracefully to extractive synthesis when the API is unavailable</li>
+      </ul>
+
+      <h3>Data Sources</h3>
+      <p>Three document collections were ingested and indexed at build time:</p>
+      <ul>
+        <li><strong>CV PDF</strong> — full résumé with experience, education, and skills</li>
+        <li><strong>Portfolio website HTML</strong> — all project pages from <code>lpoly.github.io</code>, scraped and parsed</li>
+        <li><strong>FAQ text file</strong> — manually written Q&amp;A pairs covering common recruiter questions</li>
+      </ul>
+      <p>Together these produce <strong>108 chunks</strong> across 92 source documents, covering the full breadth of my professional profile.</p>
+
+      <h3>Pipeline</h3>
+      <img src="../graphics/projects/cv-rag/pipeline.svg" alt="RAG pipeline diagram" class="details-img" style="object-fit:contain; max-height:340px; background:var(--surface);"/>
+
+      <p>The pipeline has two phases. At <strong>index time</strong>, documents are chunked, embedded with <code>BAAI/bge-m3</code>, and stored in a FAISS vector index. At <strong>query time</strong>, the user's question is embedded with the same model, the closest chunks are retrieved by cosine similarity, re-ranked with a combination of semantic score and lexical overlap, and the top results are passed as context to the LLM.</p>
+
+      <h3>Stack</h3>
+      <ul>
+        <li><strong>Embedding model:</strong> <code>BAAI/bge-m3</code> — 570M-parameter multilingual model, robust to short and noisy queries</li>
+        <li><strong>Vector store:</strong> FAISS (CPU) — in-memory index, file-backed, sub-millisecond retrieval at this scale</li>
+        <li><strong>Retrieval:</strong> LangChain FAISS wrapper · cosine similarity · multi-factor re-ranking (semantic + lexical + section bias)</li>
+        <li><strong>LLM:</strong> Groq API · <code>llama-3.3-70b-versatile</code> — fast, free inference; answers grounded in retrieved context only</li>
+        <li><strong>Frontend:</strong> Gradio chat UI deployed to Hugging Face Spaces, with a custom JavaScript widget embedded on this site</li>
+        <li><strong>Ingest:</strong> custom <code>ingest.py</code> script — parses PDF (PyPDF), crawls HTML (BeautifulSoup), chunks and indexes with metadata</li>
+      </ul>
+    </div>
+  </main>
+</div>
+<footer>Last updated: June 2, 2026</footer>
+<link rel="stylesheet" href="../assets/css/rag-chat-widget.css"/>
+<script src="../assets/js/rag-chat-widget.js" defer></script>
+</body>
+</html>
