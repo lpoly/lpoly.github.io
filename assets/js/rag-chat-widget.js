@@ -1,7 +1,7 @@
 (function () {
   const SPACE_BASE     = "https://lpoly-cv-rag.hf.space";
-  const CHAT_URL       = SPACE_BASE + "/api/chat";
-  const CLEAR_URL      = SPACE_BASE + "/api/clear";
+  const CHAT_URL       = SPACE_BASE + "/bot/chat";
+  const CLEAR_URL      = SPACE_BASE + "/bot/clear";
   const MAX_RETRIES    = 5;
   const RETRY_DELAY_MS = 10000;
   const FETCH_TIMEOUT  = 65000;
