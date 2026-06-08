@@ -126,11 +126,9 @@
         succeeded = true;
         break;
       } catch (err) {
-        if (attempt === 0 && err.name === "AbortError") {
-          setStatus("Waking up assistant (~30 s)…");
-        } else if (attempt >= MAX_RETRIES || err.name !== "AbortError") {
-          break;
-        }
+        const retryable = err.name === "AbortError" || err.name === "TypeError";
+        if (attempt === 0) setStatus("Waking up assistant (~30 s)…");
+        if (!retryable || attempt >= MAX_RETRIES) break;
       }
     }
 
